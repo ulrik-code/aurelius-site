@@ -1,153 +1,1107 @@
----
-// Landing page - redirects to guides index for now
-// When ready, port the full aurelius-landing/index.html here
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aurelius | AI Accountability Partner Built on Stoic Philosophy</title>
-  <meta name="description" content="Journal daily. Get scored nightly. Face the truth weekly. Aurelius is your AI accountability partner built on Stoic philosophy." />
-  <meta property="og:title" content="Aurelius — Your AI Accountability Partner" />
-  <meta property="og:description" content="Journal daily. Get scored nightly. Face the truth weekly. A discipline system built on Stoic philosophy." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+  <meta name="description" content="Journal daily. Get scored nightly. Face the truth weekly. Aurelius is your AI accountability partner — Stoic judgment, daily scoring, and weekly narratives that tell you what you won't tell yourself.">
+  <meta property="og:title" content="Aurelius — Your AI Accountability Partner">
+  <meta property="og:description" content="Journal daily. Get scored nightly. Face the truth weekly. A discipline system built on Stoic philosophy.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="aurelius-bust.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aurelius — Your AI Accountability Partner">
+  <meta name="twitter:description" content="Journal daily. Get scored nightly. Face the truth weekly.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Geist:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #0e1016;
+      --text: #f0f0f0;
+      --text-muted: #888;
+      --accent-teal: #5eb8c7;
+      --accent-gold: #d4a500;
+      --accent-gold-hover: #c49800;
+      --error: #f59e0b;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-border-hover: rgba(94, 184, 199, 0.4);
+      --font: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ── Nav ── */
+    nav {
+      padding: 1.5rem 3rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(14, 16, 22, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: background 0.3s ease;
+    }
+
+    .logo {
+      display: block;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 80px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-teal);
+    }
+
+    .nav-btn {
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      background: var(--accent-teal);
+      color: var(--bg);
+      border: none;
+    }
+
+    .nav-btn:hover {
+      background: #4da3b2;
+    }
+
+    /* ── Sections ── */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.25rem;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      padding: 10rem 3rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -5%;
+      transform: translateY(-50%);
+      width: 45%;
+      height: 65%;
+      background: radial-gradient(ellipse at center, rgba(0, 188, 212, 0.06) 0%, rgba(0, 188, 212, 0.02) 35%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-left {
+      flex: 1.15;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      max-width: 420px;
+      z-index: 1;
+    }
+
+    .hero-identity {
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-action {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .hero-action .btn-gold {
+      margin-top: 0.75rem;
+    }
+
+    .hero-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent;
+      z-index: 1;
+    }
+
+    .wordmark {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      color: var(--accent-teal);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .hero-headline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 400;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+      color: rgba(255, 255, 255, 0.9);
+      text-align: left;
+    }
+
+    .hero-subheadline {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-image-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(ellipse at center, rgba(0, 188, 212, 0.18) 0%, rgba(0, 188, 212, 0.08) 30%, rgba(0, 188, 212, 0.02) 55%, transparent 70%);
+      border-radius: 50%;
+      z-index: -1;
+      filter: blur(40px);
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 0 20px rgba(0, 188, 212, 0.12)) drop-shadow(0 0 50px rgba(0, 188, 212, 0.05));
+    }
+
+    .hero-hook-setup {
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.4;
+    }
+
+    .hero-hook-punch {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--accent-teal);
+      line-height: 1.4;
+    }
+
+    /* ── Buttons ── */
+    .btn-gold {
+      display: inline-block;
+      padding: 0.875rem 2.5rem;
+      font-size: 1.05rem;
+      font-family: var(--font);
+      font-weight: 600;
+      background: var(--accent-teal);
+      color: var(--bg);
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-gold:hover {
+      background: #4da3b2;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 0.875rem 2.5rem;
+      font-size: 1.05rem;
+      font-family: var(--font);
+      font-weight: 500;
+      background: transparent;
+      color: var(--accent-teal);
+      border: 1px solid var(--accent-teal);
+      border-radius: 4px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-outline:hover {
+      background: var(--accent-teal);
+      color: var(--bg);
+    }
+
+    /* ── Problem ── */
+    .problem {
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .problem h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.25rem;
+      font-weight: 400;
+      margin-bottom: 2.5rem;
+      color: var(--text);
+    }
+
+    .pain-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .pain-points li {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .problem-closer {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.75rem;
+      color: var(--accent-teal);
+      font-weight: 400;
+    }
+
+    /* ── Solution ── */
+    .solution {
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .solution h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.25rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+
+    .solution p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* ── Timeline ── */
+    .timeline-section {
+      padding: 3.5rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 3rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--accent-teal);
+      opacity: 0.4;
+    }
+
+    .timeline-step {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .timeline-step:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-step::before {
+      content: '';
+      position: absolute;
+      left: -2.85rem;
+      top: 0.5rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent-teal);
+      border: 2px solid var(--bg);
+      z-index: 1;
+    }
+
+    .timeline-time {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-label {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── Features ── */
+    .features-section {
+      padding: 3.5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 180px;
+    }
+
+    .feature-card:hover {
+      border-color: var(--card-border-hover);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .feature-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--accent-teal);
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-description {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    /* ── Pricing (removed — waitlist only) ── */
+
+    /* ── Final CTA ── */
+    .final-cta {
+      text-align: center;
+      padding: 3.5rem 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .final-cta h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.25rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .final-cta .final-subtext {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .email-input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      font-family: var(--font);
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      color: var(--text);
+      outline: none;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .email-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .email-input:focus {
+      border-color: var(--accent-teal);
+      box-shadow: 0 0 0 3px rgba(94, 184, 199, 0.15);
+    }
+
+    .submit-btn {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      font-family: var(--font);
+      font-weight: 500;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .submit-btn:hover:not(:disabled) {
+      border-color: var(--accent-teal);
+      color: var(--accent-teal);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .form-message {
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+
+    .form-message.error {
+      color: var(--error);
+    }
+
+    .success-message {
+      color: var(--accent-gold);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--card-border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-left a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-left a:hover {
+      color: var(--accent-teal);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-teal);
+    }
+
+    /* ── Scroll Animation ── */
+    .scroll-animation-section {
+      position: relative;
+      height: 200vh; /* controls scroll length — 2x viewport */
+      background: var(--bg);
+    }
+
+    .scroll-animation-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .scroll-canvas {
+      max-width: 720px;
+      max-height: 720px;
+      width: 80vmin;
+      height: 80vmin;
+      /* no glow */
+    }
+
+    .scroll-progress-bar {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .scroll-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent-teal);
+      border-radius: 2px;
+      transition: width 0.05s linear;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-link {
+        display: none;
+      }
+
+      .logo-img {
+        height: 50px;
+      }
+
+      .hero {
+        flex-direction: column;
+        padding: 7rem 1.5rem 3rem;
+        text-align: center;
+      }
+
+      .hero-left {
+        align-items: center;
+      }
+
+      .hero-identity {
+        text-align: center;
+      }
+
+      .hero-action {
+        align-items: center;
+        text-align: center;
+      }
+
+      .wordmark {
+        font-size: 2.5rem;
+        letter-spacing: 0.25em;
+        text-align: center;
+      }
+
+      .hero-headline {
+        font-size: 1.35rem;
+      }
+
+      .hero-subheadline {
+        white-space: normal;
+      }
+
+      .hero-image {
+        max-width: 300px;
+      }
+
+      .btn-gold, .btn-outline {
+        width: 100%;
+        text-align: center;
+      }
+
+      .section-heading,
+      .problem h2,
+      .solution h2,
+      .final-cta h2 {
+        font-size: 1.75rem;
+      }
+
+      .problem, .solution, .timeline-section, .features-section, .final-cta {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        min-height: auto;
+      }
+
+      .timeline::before {
+        display: none;
+      }
+
+      .timeline {
+        padding-left: 0;
+      }
+
+      .timeline-step {
+        padding-left: 0;
+        padding: 1.5rem;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+      }
+
+      .timeline-step::before {
+        display: none;
+      }
+
+      .form-row {
+        flex-direction: column;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <nav class="site-nav">
-    <a href="/" class="nav-logo">Aurelius</a>
+  <!-- Nav -->
+  <nav>
+    <a href="https://sparboesystems.com" class="logo" target="_blank">
+      <img src="ss-logo.webp?v=2" alt="Sparboe Systems" class="logo-img">
+    </a>
     <div class="nav-links">
-      <a href="/guides/">Guides</a>
-      <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+      <a href="#how-it-works" class="nav-link">How It Works</a>
+      <a href="/guides/" class="nav-link">Guides</a>
+      <a href="#waitlist" class="nav-btn">Join Waitlist</a>
     </div>
   </nav>
 
-  <main class="hero">
-    <h1>Journal daily.<br/>Get scored nightly.<br/>Face the truth weekly.</h1>
-    <p class="tagline">An AI accountability partner built on Stoic philosophy. Not a feelings diary. A discipline system.</p>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-identity">
+          <h1 class="wordmark">Aurelius</h1>
+          <p class="hero-headline">Your AI accountability partner. Built on Stoic philosophy.</p>
+          <p class="hero-subheadline">Journal daily. Get scored nightly. Face the truth weekly.</p>
+        </div>
+        <div class="hero-action">
+          <p class="hero-hook-setup">Most people quit journaling in two weeks.</p>
+          <p class="hero-hook-punch">Aurelius makes sure you don't.</p>
+          <a href="#waitlist" class="btn-gold">Join the Waitlist</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-image-wrapper">
+          <img
+            src="aurelius-bust.png?v=3"
+            alt="Aurelius - A classical bust with digital circuit patterns"
+            class="hero-image"
+          >
+        </div>
+      </div>
+    </section>
 
-    <div id="waitlist" class="waitlist-section">
-      <form action="https://n8n-u6v4.onrender.com/webhook/aurelius-waitlist" method="POST" class="waitlist-form">
-        <input type="email" name="email" placeholder="your@email.com" required class="email-input" />
-        <button type="submit" class="cta-button">Join the Waitlist</button>
-      </form>
-    </div>
+    <!-- Scroll Animation -->
+    <section class="scroll-animation-section" id="scroll-reveal">
+      <div class="scroll-animation-sticky">
+        <canvas class="scroll-canvas" id="scrollCanvas" width="720" height="720"></canvas>
+        <div class="scroll-progress-bar">
+          <div class="scroll-progress-fill" id="scrollProgressFill"></div>
+        </div>
+      </div>
+    </section>
 
-    <div class="features">
-      <div class="feature">
-        <h3>Morning Intention</h3>
-        <p>Start each day with a Stoic prompt. Set your standard before the day sets it for you.</p>
-      </div>
-      <div class="feature">
-        <h3>Nightly Scoring</h3>
-        <p>Rate your Energy, Focus, Physical, and Satisfaction. Honest numbers, not vague feelings.</p>
-      </div>
-      <div class="feature">
-        <h3>AI Judgment</h3>
-        <p>At 10PM, Aurelius reads your day and tells you what you won't tell yourself. Honest before kind.</p>
-      </div>
-      <div class="feature">
-        <h3>Weekly Mirror</h3>
-        <p>Every Sunday, a narrative that synthesizes your week. Patterns you can't see in the daily noise.</p>
-      </div>
-    </div>
+    <!-- Problem -->
+    <section class="problem">
+      <h2>Most people journal into the void</h2>
+      <ul class="pain-points">
+        <li>No one reads it back to you</li>
+        <li>No one tracks whether you followed through</li>
+        <li>No one tells you the pattern you can't see yourself</li>
+      </ul>
+      <p class="problem-closer">Aurelius does.</p>
+    </section>
 
-    <div class="guides-promo">
-      <h2>Learn More</h2>
-      <p>Read our <a href="/guides/">guides on AI journaling, Stoic accountability, and building a reflection practice</a>.</p>
-    </div>
+    <!-- Solution -->
+    <section class="solution">
+      <h2>A discipline system, not a chatbot</h2>
+      <p>Aurelius reads your journal entries, scores your day, compares your intentions against your actions, and delivers Stoic judgment. No sugarcoating. No affirmations. The truth about your week &mdash; told back to you like a mirror.</p>
+    </section>
+
+    <!-- How It Works -->
+    <section class="timeline-section" id="how-it-works">
+      <h2 class="section-heading">The Daily Rhythm</h2>
+      <p class="section-subtitle">A loop designed for discipline, not engagement.</p>
+
+      <div class="timeline">
+        <div class="timeline-step">
+          <p class="timeline-time">Morning</p>
+          <h3 class="timeline-label">Journal</h3>
+          <p class="timeline-desc">Write your raw thoughts in Notion. Plans, reflections, tensions.</p>
+        </div>
+        <div class="timeline-step">
+          <p class="timeline-time">9 PM</p>
+          <h3 class="timeline-label">Score</h3>
+          <p class="timeline-desc">Rate your day: Energy, Focus, Physical, Satisfaction. 30 seconds.</p>
+        </div>
+        <div class="timeline-step">
+          <p class="timeline-time">10 PM</p>
+          <h3 class="timeline-label">Judgment</h3>
+          <p class="timeline-desc">Aurelius reads everything. Names the gap between intention and action. One Stoic lens.</p>
+        </div>
+        <div class="timeline-step">
+          <p class="timeline-time">Sunday</p>
+          <h3 class="timeline-label">Weekly Mirror</h3>
+          <p class="timeline-desc">Full week synthesis. Patterns, wins, drift. Not a summary &mdash; a confrontation.</p>
+        </div>
+        <div class="timeline-step">
+          <p class="timeline-time">Monday</p>
+          <h3 class="timeline-label">Goal Check</h3>
+          <p class="timeline-desc">Stale goals surfaced. Overdue commitments called out.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section">
+      <h2 class="section-heading">Built for Discipline</h2>
+      <p class="section-subtitle">Every feature exists to make you more accountable.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3 class="feature-title">Stoic Judgment</h3>
+          <p class="feature-description">Reads your journal. Compares stated intentions vs actions. Calls the gap.</p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-title">Daily Scoring</h3>
+          <p class="feature-description">Energy, Focus, Physical, Satisfaction. Four numbers. Every night. The data of discipline.</p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-title">Weekly Narrative</h3>
+          <p class="feature-description">Your week synthesized as a story. Patterns you missed. Promises you broke. Wins you earned.</p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-title">Knowledge Graph</h3>
+          <p class="feature-description">Every entry makes every future entry more valuable. Compound interest on your thinking.</p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-title">Full Privacy</h3>
+          <p class="feature-description">Your journal lives in YOUR Notion. We see scores, not souls.</p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-title">Bring Your Own Keys</h3>
+          <p class="feature-description">Run it on your infrastructure. Your API keys. Your data. Zero lock-in.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Waitlist CTA -->
+    <section class="final-cta" id="waitlist">
+      <h2>The practice starts with one entry.</h2>
+      <p class="final-subtext">Join the waitlist. Be first when Aurelius opens access.</p>
+
+      <div id="formContainer">
+        <form id="waitlistForm" class="form-row">
+          <label for="email" class="sr-only">Email address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="email-input"
+            placeholder="your@email.com"
+            required
+            autocomplete="email"
+          >
+          <button type="submit" class="submit-btn" id="submitBtn">Join Waitlist</button>
+        </form>
+        <div id="formMessage" class="form-message hidden"></div>
+      </div>
+
+      <div id="successState" class="hidden">
+        <p class="success-message">You're on the list.</p>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <p>Built by <a href="https://sparboesystems.com">Sparboe Systems</a></p>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-left">
+      &copy; 2026 Aurelius. A <a href="https://sparboesystems.com" target="_blank">Sparboe Systems</a> product.
+    </div>
+    <div class="footer-links">
+      <a href="#privacy">Privacy</a>
+      <a href="#terms">Terms</a>
+    </div>
   </footer>
+
+  <script>
+    (function() {
+      const WEBHOOK_URL = 'https://n8n-u6v4.onrender.com/webhook/aurelius-waitlist';
+
+      const form = document.getElementById('waitlistForm');
+      const formContainer = document.getElementById('formContainer');
+      const successState = document.getElementById('successState');
+      const submitBtn = document.getElementById('submitBtn');
+      const formMessage = document.getElementById('formMessage');
+      const emailInput = document.getElementById('email');
+
+      const originalBtnText = submitBtn.textContent;
+
+      function showError(message) {
+        formMessage.textContent = message;
+        formMessage.className = 'form-message error';
+        formMessage.classList.remove('hidden');
+      }
+
+      function hideMessage() {
+        formMessage.classList.add('hidden');
+      }
+
+      function setLoading(isLoading) {
+        submitBtn.disabled = isLoading;
+        submitBtn.textContent = isLoading ? '...' : originalBtnText;
+        emailInput.disabled = isLoading;
+      }
+
+      function showSuccess() {
+        formContainer.classList.add('hidden');
+        successState.classList.remove('hidden');
+      }
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        hideMessage();
+
+        const email = emailInput.value.trim();
+
+        if (!email) {
+          showError('Please enter your email address.');
+          return;
+        }
+
+        setLoading(true);
+
+        try {
+          const response = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: email }),
+          });
+
+          if (!response.ok) {
+            throw new Error('Request failed');
+          }
+
+          showSuccess();
+        } catch (error) {
+          showError('Something went wrong. Please try again.');
+          setLoading(false);
+        }
+      });
+    })();
+  </script>
+
+  <script>
+    (function() {
+      const FRAME_COUNT = 121;
+      const canvas = document.getElementById('scrollCanvas');
+      const ctx = canvas.getContext('2d');
+      const progressFill = document.getElementById('scrollProgressFill');
+      const section = document.getElementById('scroll-reveal');
+
+      // Pre-load all frames
+      const frames = [];
+      let loadedCount = 0;
+      let currentFrame = 0;
+      let rafId = null;
+
+      function framePath(index) {
+        return 'frames/frame_' + String(index).padStart(4, '0') + '.webp';
+      }
+
+      function drawFrame(index) {
+        if (frames[index] && frames[index].complete) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(frames[index], 0, 0, canvas.width, canvas.height);
+        }
+      }
+
+      // Pre-load frames with priority: first load frame 1, then rest
+      function preloadFrames() {
+        for (let i = 1; i <= FRAME_COUNT; i++) {
+          const img = new Image();
+          img.src = framePath(i);
+          if (i === 1) {
+            img.onload = function() { drawFrame(1); };
+          }
+          img.onload = function() { loadedCount++; };
+          frames[i] = img;
+        }
+      }
+
+      function onScroll() {
+        const rect = section.getBoundingClientRect();
+        const sectionTop = rect.top;
+        const sectionHeight = section.offsetHeight;
+        // Start when section top hits bottom of viewport, end when section bottom hits top
+        const progress = Math.max(0, Math.min(1, (window.innerHeight - sectionTop) / sectionHeight));
+        const frameIndex = Math.max(1, Math.min(FRAME_COUNT, Math.round(progress * (FRAME_COUNT - 1)) + 1));
+
+        if (frameIndex !== currentFrame) {
+          currentFrame = frameIndex;
+          drawFrame(frameIndex);
+        }
+
+        progressFill.style.width = (progress * 100) + '%';
+      }
+
+      function onScrollRAF() {
+        onScroll();
+        rafId = requestAnimationFrame(onScrollRAF);
+      }
+
+      // Use IntersectionObserver to only run scroll handler when section is visible
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            rafId = requestAnimationFrame(onScrollRAF);
+          } else {
+            if (rafId) {
+              cancelAnimationFrame(rafId);
+              rafId = null;
+            }
+          }
+        });
+      }, { threshold: 0 });
+
+      observer.observe(section);
+      preloadFrames();
+    })();
+  </script>
 </body>
 </html>
-
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Geist', -apple-system, sans-serif;
-    background: #0e1016;
-    color: #e8e8e8;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  .site-nav {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.25rem 2rem; max-width: 900px; margin: 0 auto;
-  }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
-    color: #5eb8c7; text-decoration: none;
-  }
-  .nav-links { display: flex; align-items: center; gap: 1.5rem; }
-  .nav-links a { color: #888; text-decoration: none; font-size: 0.9rem; }
-  .nav-links a:hover { color: #e8e8e8; }
-  .nav-cta {
-    padding: 0.5rem 1rem; background: #d4a500; color: #0e1016 !important;
-    border-radius: 6px; font-weight: 600; font-size: 0.85rem !important;
-  }
-  .hero {
-    max-width: 720px; margin: 0 auto; padding: 4rem 2rem; text-align: center;
-  }
-  .hero h1 {
-    font-family: 'Cormorant Garamond', serif; font-weight: 300;
-    font-size: 3rem; line-height: 1.2; margin-bottom: 1.5rem;
-  }
-  .tagline {
-    font-size: 1.15rem; color: #888; margin-bottom: 2.5rem; line-height: 1.6;
-  }
-  .waitlist-section { margin-bottom: 4rem; }
-  .waitlist-form { display: flex; gap: 0.5rem; max-width: 420px; margin: 0 auto; }
-  .email-input {
-    flex: 1; padding: 0.75rem 1rem;
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 8px; color: #f0f0f0; font-family: 'Geist', sans-serif; font-size: 0.9rem;
-  }
-  .email-input::placeholder { color: #555; }
-  .email-input:focus { outline: none; border-color: rgba(94,184,199,0.5); }
-  .cta-button {
-    padding: 0.75rem 1.5rem; background: #d4a500; color: #0e1016;
-    border: none; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
-    cursor: pointer; white-space: nowrap;
-  }
-  .cta-button:hover { background: #c49800; }
-  .features {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
-    margin-bottom: 4rem; text-align: left;
-  }
-  .feature {
-    padding: 1.5rem; background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
-  }
-  .feature h3 {
-    font-family: 'Cormorant Garamond', serif; font-weight: 400;
-    font-size: 1.2rem; color: #5eb8c7; margin-bottom: 0.5rem;
-  }
-  .feature p { color: #888; font-size: 0.9rem; line-height: 1.5; }
-  .guides-promo {
-    padding: 2rem; background: rgba(94,184,199,0.06);
-    border: 1px solid rgba(94,184,199,0.15); border-radius: 12px;
-  }
-  .guides-promo h2 {
-    font-family: 'Cormorant Garamond', serif; font-weight: 400;
-    font-size: 1.4rem; color: #5eb8c7; margin-bottom: 0.5rem;
-  }
-  .guides-promo p { color: #888; font-size: 0.95rem; }
-  .guides-promo a { color: #5eb8c7; text-decoration: underline; }
-  .site-footer {
-    max-width: 720px; margin: 0 auto; padding: 3rem 2rem;
-    text-align: center; border-top: 1px solid rgba(255,255,255,0.08);
-  }
-  .site-footer p { color: #888; font-size: 0.85rem; }
-  .site-footer a { color: #888; text-decoration: underline; }
-  @media (max-width: 600px) {
-    .hero h1 { font-size: 2rem; }
-    .features { grid-template-columns: 1fr; }
-    .waitlist-form { flex-direction: column; }
-    .hero { padding: 2rem 1rem; }
-  }
-</style>
