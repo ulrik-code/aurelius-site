@@ -625,14 +625,6 @@
       color: var(--accent-teal);
     }
 
-    /* ── Scroll Animation (inline in hero) ── */
-    .scroll-canvas {
-      width: 100%;
-      max-width: 520px;
-      height: auto;
-      aspect-ratio: 1;
-      background: transparent;
-    }
 
     /* ── Responsive ── */
     @media (max-width: 900px) {
@@ -778,8 +770,12 @@
         </div>
       </div>
       <div class="hero-right">
-        <div class="hero-image-wrapper" id="scroll-reveal">
-          <canvas class="scroll-canvas" id="scrollCanvas" width="720" height="720"></canvas>
+        <div class="hero-image-wrapper">
+          <img
+            src="aurelius-bust.png?v=3"
+            alt="Aurelius - A classical bust with digital circuit patterns"
+            class="hero-image"
+          >
         </div>
       </div>
     </section>
@@ -976,56 +972,5 @@
     })();
   </script>
 
-  <script>
-    (function() {
-      const FRAME_COUNT = 121;
-      const canvas = document.getElementById('scrollCanvas');
-      const ctx = canvas.getContext('2d');
-
-      const frames = [];
-      let currentFrame = 0;
-
-      function framePath(index) {
-        return 'frames/frame_' + String(index).padStart(4, '0') + '.webp';
-      }
-
-      function drawFrame(index) {
-        if (frames[index] && frames[index].complete) {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.drawImage(frames[index], 0, 0, canvas.width, canvas.height);
-        }
-      }
-
-      function preloadFrames() {
-        for (let i = 1; i <= FRAME_COUNT; i++) {
-          const img = new Image();
-          img.src = framePath(i);
-          if (i === 1) {
-            img.onload = function() { drawFrame(1); };
-          }
-          frames[i] = img;
-        }
-      }
-
-      function onScroll() {
-        // Map full page scroll to frame index
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = Math.max(0, Math.min(1, scrollTop / docHeight));
-        const frameIndex = Math.max(1, Math.min(FRAME_COUNT, Math.round(progress * (FRAME_COUNT - 1)) + 1));
-
-        if (frameIndex !== currentFrame) {
-          currentFrame = frameIndex;
-          drawFrame(frameIndex);
-        }
-      }
-
-      window.addEventListener('scroll', function() {
-        requestAnimationFrame(onScroll);
-      }, { passive: true });
-
-      preloadFrames();
-    })();
-  </script>
 </body>
 </html>
