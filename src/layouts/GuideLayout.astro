@@ -1,0 +1,327 @@
+---
+import FAQSchema from '../components/FAQSchema.astro';
+import WaitlistCTA from '../components/WaitlistCTA.astro';
+import GuideNav from '../components/GuideNav.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  description: string;
+  publishDate: string;
+  readTime: string;
+  slug: string;
+  faq: Array<{ question: string; answer: string }>;
+  allGuides: Array<{ slug: string; title: string }>;
+}
+
+const { title, subtitle, description, publishDate, readTime, slug, faq, allGuides } = Astro.props;
+const canonicalUrl = new URL(`/guides/${slug}/`, Astro.site);
+const ogImage = new URL(`/og/${slug}.png`, Astro.site);
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} | Aurelius</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl.href} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl.href} />
+  <meta property="og:image" content={ogImage.href} />
+  <meta property="og:site_name" content="Aurelius" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage.href} />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- FAQ Schema -->
+  <FAQSchema questions={faq} />
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">Aurelius</a>
+    <div class="nav-links">
+      <a href="/guides/">Guides</a>
+      <a href="/#waitlist" class="nav-cta">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <main class="guide-container">
+    <article class="guide-article">
+      <header class="guide-header">
+        <a href="/guides/" class="breadcrumb">Guides</a>
+        <h1>{title}</h1>
+        <p class="subtitle">{subtitle}</p>
+        <div class="byline">
+          <span>By Ulrik Sparboe</span>
+          <span class="sep">·</span>
+          <time datetime={publishDate}>{new Date(publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+          <span class="sep">·</span>
+          <span>{readTime}</span>
+        </div>
+      </header>
+
+      <div class="guide-content">
+        <slot />
+      </div>
+
+      <WaitlistCTA slug={slug} />
+
+      <GuideNav currentSlug={slug} allGuides={allGuides} />
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built by <a href="https://sparboesystems.com">Sparboe Systems</a></p>
+  </footer>
+</body>
+</html>
+
+<style is:global>
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --bg: #0e1016;
+    --text: #e8e8e8;
+    --text-muted: #888;
+    --accent-teal: #5eb8c7;
+    --accent-gold: #d4a500;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.08);
+  }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--accent-teal);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: var(--text);
+  }
+
+  .nav-cta {
+    padding: 0.5rem 1rem;
+    background: var(--accent-gold);
+    color: var(--bg) !important;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem !important;
+  }
+
+  .nav-cta:hover {
+    opacity: 0.9;
+  }
+
+  .guide-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .guide-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .breadcrumb {
+    display: inline-block;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .breadcrumb:hover {
+    color: var(--accent-teal);
+  }
+
+  .guide-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+
+  .subtitle {
+    font-size: 1.15rem;
+    color: var(--accent-teal);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .byline {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .byline .sep {
+    margin: 0 0.5rem;
+  }
+
+  /* Content styles */
+  .guide-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: var(--text);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .guide-content h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .guide-content p {
+    margin-bottom: 1.25rem;
+    color: #ccc;
+    line-height: 1.8;
+  }
+
+  .guide-content ul, .guide-content ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .guide-content li {
+    color: #ccc;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .guide-content strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .guide-content blockquote {
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 3px solid var(--accent-teal);
+    background: var(--card-bg);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .guide-content blockquote p {
+    color: var(--text);
+    margin-bottom: 0;
+  }
+
+  .guide-content a {
+    color: var(--accent-teal);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(94, 184, 199, 0.3);
+    transition: border-color 0.2s;
+  }
+
+  .guide-content a:hover {
+    border-color: var(--accent-teal);
+  }
+
+  /* FAQ section */
+  .guide-content .faq-section dt {
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+  }
+
+  .guide-content .faq-section dd {
+    color: #ccc;
+    margin-left: 0;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .site-footer {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--card-border);
+  }
+
+  .site-footer p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .site-footer a {
+    color: var(--text-muted);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 600px) {
+    .guide-header h1 {
+      font-size: 1.8rem;
+    }
+    .guide-container {
+      padding: 1rem;
+    }
+    .site-nav {
+      padding: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,69 @@
+---
+interface Props {
+  currentSlug: string;
+  allGuides: Array<{ slug: string; title: string }>;
+}
+const { currentSlug, allGuides } = Astro.props;
+const currentIndex = allGuides.findIndex((g) => g.slug === currentSlug);
+const prev = currentIndex > 0 ? allGuides[currentIndex - 1] : null;
+const next = currentIndex < allGuides.length - 1 ? allGuides[currentIndex + 1] : null;
+---
+<nav class="guide-nav">
+  {prev && (
+    <a href={`/guides/${prev.slug}/`} class="nav-link nav-prev">
+      <span class="nav-label">Previous</span>
+      <span class="nav-title">{prev.title}</span>
+    </a>
+  )}
+  {next && (
+    <a href={`/guides/${next.slug}/`} class="nav-link nav-next">
+      <span class="nav-label">Next</span>
+      <span class="nav-title">{next.title}</span>
+    </a>
+  )}
+</nav>
+
+<style>
+  .guide-nav {
+    display: flex;
+    gap: 1.5rem;
+    margin: 3rem 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .nav-link {
+    flex: 1;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .nav-link:hover {
+    border-color: rgba(94, 184, 199, 0.4);
+  }
+  .nav-next {
+    text-align: right;
+  }
+  .nav-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 0.25rem;
+  }
+  .nav-title {
+    display: block;
+    color: #5eb8c7;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  @media (max-width: 600px) {
+    .guide-nav {
+      flex-direction: column;
+    }
+    .nav-next {
+      text-align: left;
+    }
+  }
+</style>

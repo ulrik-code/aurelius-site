@@ -1,0 +1,34 @@
+---
+import { getCollection, render } from 'astro:content';
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((guide) => ({
+    params: { slug: guide.id },
+    props: { guide },
+  }));
+}
+
+const { guide } = Astro.props;
+const { Content } = await render(guide);
+
+const allGuidesRaw = await getCollection('guides');
+const tierOrder = { 'category-defining': 0, 'high-intent': 1, 'long-tail': 2 };
+const allGuides = allGuidesRaw
+  .sort((a, b) => tierOrder[a.data.tier] - tierOrder[b.data.tier])
+  .map((g) => ({ slug: g.id, title: g.data.title }));
+---
+
+<GuideLayout
+  title={guide.data.title}
+  subtitle={guide.data.subtitle}
+  description={guide.data.description}
+  publishDate={guide.data.publishDate}
+  readTime={guide.data.readTime}
+  slug={guide.id}
+  faq={guide.data.faq}
+  allGuides={allGuides}
+>
+  <Content />
+</GuideLayout>

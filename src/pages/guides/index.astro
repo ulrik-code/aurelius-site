@@ -1,0 +1,172 @@
+---
+import { getCollection } from 'astro:content';
+
+const guides = await getCollection('guides');
+
+const tierOrder = { 'category-defining': 0, 'high-intent': 1, 'long-tail': 2 };
+const tierLabels = {
+  'category-defining': 'Essential Reading',
+  'high-intent': 'Deep Dives',
+  'long-tail': 'Practical Guides',
+};
+
+const sorted = guides.sort((a, b) => tierOrder[a.data.tier] - tierOrder[b.data.tier]);
+const grouped = Object.groupBy(sorted, (g) => g.data.tier);
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guides | Aurelius — AI Stoic Journaling</title>
+  <meta name="description" content="Definitive guides on AI journaling, Stoic philosophy, accountability, and building a daily reflection practice with AI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">Aurelius</a>
+    <div class="nav-links">
+      <a href="/guides/" class="active">Guides</a>
+      <a href="/#waitlist" class="nav-cta">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <main class="guides-index">
+    <header>
+      <h1>Guides</h1>
+      <p class="intro">Everything you need to know about AI journaling, Stoic accountability, and building a daily reflection practice that actually sticks.</p>
+    </header>
+
+    {Object.entries(grouped).map(([tier, items]) => (
+      <section class="tier-section">
+        <h2>{tierLabels[tier as keyof typeof tierLabels]}</h2>
+        <div class="guides-grid">
+          {items?.map((guide) => (
+            <a href={`/guides/${guide.id}/`} class="guide-card">
+              <h3>{guide.data.title}</h3>
+              <p>{guide.data.description}</p>
+              <span class="read-time">{guide.data.readTime}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </main>
+
+  <footer class="site-footer">
+    <p>Built by <a href="https://sparboesystems.com">Sparboe Systems</a></p>
+  </footer>
+</body>
+</html>
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Geist', -apple-system, sans-serif;
+    background: #0e1016;
+    color: #e8e8e8;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: #5eb8c7;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-links a { color: #888; text-decoration: none; font-size: 0.9rem; }
+  .nav-links a.active { color: #e8e8e8; }
+  .nav-links a:hover { color: #e8e8e8; }
+  .nav-cta {
+    padding: 0.5rem 1rem;
+    background: #d4a500;
+    color: #0e1016 !important;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem !important;
+  }
+  .guides-index {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  header {
+    margin-bottom: 3rem;
+  }
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 2.4rem;
+    margin-bottom: 0.75rem;
+  }
+  .intro {
+    color: #888;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  .tier-section {
+    margin-bottom: 3rem;
+  }
+  .tier-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: #5eb8c7;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .guides-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .guide-card {
+    display: block;
+    padding: 1.25rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .guide-card:hover {
+    border-color: rgba(94,184,199,0.4);
+  }
+  .guide-card h3 {
+    color: #e8e8e8;
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+  .guide-card p {
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+  .read-time {
+    color: #555;
+    font-size: 0.8rem;
+  }
+  .site-footer {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .site-footer p { color: #888; font-size: 0.85rem; }
+  .site-footer a { color: #888; text-decoration: underline; }
+</style>

@@ -1,0 +1,153 @@
+---
+// Landing page - redirects to guides index for now
+// When ready, port the full aurelius-landing/index.html here
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurelius | AI Accountability Partner Built on Stoic Philosophy</title>
+  <meta name="description" content="Journal daily. Get scored nightly. Face the truth weekly. Aurelius is your AI accountability partner built on Stoic philosophy." />
+  <meta property="og:title" content="Aurelius — Your AI Accountability Partner" />
+  <meta property="og:description" content="Journal daily. Get scored nightly. Face the truth weekly. A discipline system built on Stoic philosophy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">Aurelius</a>
+    <div class="nav-links">
+      <a href="/guides/">Guides</a>
+      <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <main class="hero">
+    <h1>Journal daily.<br/>Get scored nightly.<br/>Face the truth weekly.</h1>
+    <p class="tagline">An AI accountability partner built on Stoic philosophy. Not a feelings diary. A discipline system.</p>
+
+    <div id="waitlist" class="waitlist-section">
+      <form action="https://n8n-u6v4.onrender.com/webhook/aurelius-waitlist" method="POST" class="waitlist-form">
+        <input type="email" name="email" placeholder="your@email.com" required class="email-input" />
+        <button type="submit" class="cta-button">Join the Waitlist</button>
+      </form>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <h3>Morning Intention</h3>
+        <p>Start each day with a Stoic prompt. Set your standard before the day sets it for you.</p>
+      </div>
+      <div class="feature">
+        <h3>Nightly Scoring</h3>
+        <p>Rate your Energy, Focus, Physical, and Satisfaction. Honest numbers, not vague feelings.</p>
+      </div>
+      <div class="feature">
+        <h3>AI Judgment</h3>
+        <p>At 10PM, Aurelius reads your day and tells you what you won't tell yourself. Honest before kind.</p>
+      </div>
+      <div class="feature">
+        <h3>Weekly Mirror</h3>
+        <p>Every Sunday, a narrative that synthesizes your week. Patterns you can't see in the daily noise.</p>
+      </div>
+    </div>
+
+    <div class="guides-promo">
+      <h2>Learn More</h2>
+      <p>Read our <a href="/guides/">guides on AI journaling, Stoic accountability, and building a reflection practice</a>.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built by <a href="https://sparboesystems.com">Sparboe Systems</a></p>
+  </footer>
+</body>
+</html>
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Geist', -apple-system, sans-serif;
+    background: #0e1016;
+    color: #e8e8e8;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .site-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 2rem; max-width: 900px; margin: 0 auto;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+    color: #5eb8c7; text-decoration: none;
+  }
+  .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-links a { color: #888; text-decoration: none; font-size: 0.9rem; }
+  .nav-links a:hover { color: #e8e8e8; }
+  .nav-cta {
+    padding: 0.5rem 1rem; background: #d4a500; color: #0e1016 !important;
+    border-radius: 6px; font-weight: 600; font-size: 0.85rem !important;
+  }
+  .hero {
+    max-width: 720px; margin: 0 auto; padding: 4rem 2rem; text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: 3rem; line-height: 1.2; margin-bottom: 1.5rem;
+  }
+  .tagline {
+    font-size: 1.15rem; color: #888; margin-bottom: 2.5rem; line-height: 1.6;
+  }
+  .waitlist-section { margin-bottom: 4rem; }
+  .waitlist-form { display: flex; gap: 0.5rem; max-width: 420px; margin: 0 auto; }
+  .email-input {
+    flex: 1; padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; color: #f0f0f0; font-family: 'Geist', sans-serif; font-size: 0.9rem;
+  }
+  .email-input::placeholder { color: #555; }
+  .email-input:focus { outline: none; border-color: rgba(94,184,199,0.5); }
+  .cta-button {
+    padding: 0.75rem 1.5rem; background: #d4a500; color: #0e1016;
+    border: none; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+    cursor: pointer; white-space: nowrap;
+  }
+  .cta-button:hover { background: #c49800; }
+  .features {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    margin-bottom: 4rem; text-align: left;
+  }
+  .feature {
+    padding: 1.5rem; background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+  }
+  .feature h3 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400;
+    font-size: 1.2rem; color: #5eb8c7; margin-bottom: 0.5rem;
+  }
+  .feature p { color: #888; font-size: 0.9rem; line-height: 1.5; }
+  .guides-promo {
+    padding: 2rem; background: rgba(94,184,199,0.06);
+    border: 1px solid rgba(94,184,199,0.15); border-radius: 12px;
+  }
+  .guides-promo h2 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400;
+    font-size: 1.4rem; color: #5eb8c7; margin-bottom: 0.5rem;
+  }
+  .guides-promo p { color: #888; font-size: 0.95rem; }
+  .guides-promo a { color: #5eb8c7; text-decoration: underline; }
+  .site-footer {
+    max-width: 720px; margin: 0 auto; padding: 3rem 2rem;
+    text-align: center; border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .site-footer p { color: #888; font-size: 0.85rem; }
+  .site-footer a { color: #888; text-decoration: underline; }
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2rem; }
+    .features { grid-template-columns: 1fr; }
+    .waitlist-form { flex-direction: column; }
+    .hero { padding: 2rem 1rem; }
+  }
+</style>

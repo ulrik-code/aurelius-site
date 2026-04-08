@@ -1,0 +1,93 @@
+---
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
+const utmUrl = `https://n8n-u6v4.onrender.com/webhook/aurelius-waitlist?utm_source=guide&utm_medium=aeo&utm_campaign=${slug}`;
+---
+<aside class="cta-box">
+  <div class="cta-inner">
+    <h3>Aurelius is in early access</h3>
+    <p>An AI accountability partner built on Stoic philosophy. Journal daily, get scored nightly, face the truth weekly.</p>
+    <form action={utmUrl} method="POST" class="waitlist-form">
+      <input
+        type="email"
+        name="email"
+        placeholder="your@email.com"
+        required
+        class="email-input"
+      />
+      <button type="submit" class="cta-button">Join the Waitlist</button>
+    </form>
+  </div>
+</aside>
+
+<style>
+  .cta-box {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: rgba(94, 184, 199, 0.06);
+    border: 1px solid rgba(94, 184, 199, 0.2);
+    border-radius: 12px;
+  }
+  .cta-inner {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .cta-inner h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #5eb8c7;
+    margin-bottom: 0.5rem;
+  }
+  .cta-inner p {
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+  }
+  .waitlist-form {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .email-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #f0f0f0;
+    font-family: 'Geist', sans-serif;
+    font-size: 0.9rem;
+  }
+  .email-input::placeholder {
+    color: #555;
+  }
+  .email-input:focus {
+    outline: none;
+    border-color: rgba(94, 184, 199, 0.5);
+  }
+  .cta-button {
+    padding: 0.75rem 1.5rem;
+    background: #d4a500;
+    color: #0e1016;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Geist', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .cta-button:hover {
+    background: #c49800;
+  }
+  @media (max-width: 520px) {
+    .waitlist-form {
+      flex-direction: column;
+    }
+  }
+</style>
