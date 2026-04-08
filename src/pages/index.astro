@@ -625,49 +625,13 @@
       color: var(--accent-teal);
     }
 
-    /* ── Scroll Animation ── */
-    .scroll-animation-section {
-      position: relative;
-      height: 200vh; /* controls scroll length — 2x viewport */
-      background: var(--bg);
-    }
-
-    .scroll-animation-sticky {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
+    /* ── Scroll Animation (inline in hero) ── */
     .scroll-canvas {
-      max-width: 720px;
-      max-height: 720px;
-      width: 80vmin;
-      height: 80vmin;
-      /* no glow */
-    }
-
-    .scroll-progress-bar {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 120px;
-      height: 3px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .scroll-progress-fill {
-      height: 100%;
-      width: 0%;
-      background: var(--accent-teal);
-      border-radius: 2px;
-      transition: width 0.05s linear;
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      aspect-ratio: 1;
+      background: transparent;
     }
 
     /* ── Responsive ── */
@@ -814,22 +778,8 @@
         </div>
       </div>
       <div class="hero-right">
-        <div class="hero-image-wrapper">
-          <img
-            src="aurelius-bust.png?v=3"
-            alt="Aurelius - A classical bust with digital circuit patterns"
-            class="hero-image"
-          >
-        </div>
-      </div>
-    </section>
-
-    <!-- Scroll Animation -->
-    <section class="scroll-animation-section" id="scroll-reveal">
-      <div class="scroll-animation-sticky">
-        <canvas class="scroll-canvas" id="scrollCanvas" width="720" height="720"></canvas>
-        <div class="scroll-progress-bar">
-          <div class="scroll-progress-fill" id="scrollProgressFill"></div>
+        <div class="hero-image-wrapper" id="scroll-reveal">
+          <canvas class="scroll-canvas" id="scrollCanvas" width="720" height="720"></canvas>
         </div>
       </div>
     </section>
@@ -1031,14 +981,9 @@
       const FRAME_COUNT = 121;
       const canvas = document.getElementById('scrollCanvas');
       const ctx = canvas.getContext('2d');
-      const progressFill = document.getElementById('scrollProgressFill');
-      const section = document.getElementById('scroll-reveal');
 
-      // Pre-load all frames
       const frames = [];
-      let loadedCount = 0;
       let currentFrame = 0;
-      let rafId = null;
 
       function framePath(index) {
         return 'frames/frame_' + String(index).padStart(4, '0') + '.webp';
@@ -1051,7 +996,6 @@
         }
       }
 
-      // Pre-load frames with priority: first load frame 1, then rest
       function preloadFrames() {
         for (let i = 1; i <= FRAME_COUNT; i++) {
           const img = new Image();
@@ -1059,47 +1003,27 @@
           if (i === 1) {
             img.onload = function() { drawFrame(1); };
           }
-          img.onload = function() { loadedCount++; };
           frames[i] = img;
         }
       }
 
       function onScroll() {
-        const rect = section.getBoundingClientRect();
-        const sectionTop = rect.top;
-        const sectionHeight = section.offsetHeight;
-        // Start when section top hits bottom of viewport, end when section bottom hits top
-        const progress = Math.max(0, Math.min(1, (window.innerHeight - sectionTop) / sectionHeight));
+        // Map full page scroll to frame index
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = Math.max(0, Math.min(1, scrollTop / docHeight));
         const frameIndex = Math.max(1, Math.min(FRAME_COUNT, Math.round(progress * (FRAME_COUNT - 1)) + 1));
 
         if (frameIndex !== currentFrame) {
           currentFrame = frameIndex;
           drawFrame(frameIndex);
         }
-
-        progressFill.style.width = (progress * 100) + '%';
       }
 
-      function onScrollRAF() {
-        onScroll();
-        rafId = requestAnimationFrame(onScrollRAF);
-      }
+      window.addEventListener('scroll', function() {
+        requestAnimationFrame(onScroll);
+      }, { passive: true });
 
-      // Use IntersectionObserver to only run scroll handler when section is visible
-      const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            rafId = requestAnimationFrame(onScrollRAF);
-          } else {
-            if (rafId) {
-              cancelAnimationFrame(rafId);
-              rafId = null;
-            }
-          }
-        });
-      }, { threshold: 0 });
-
-      observer.observe(section);
       preloadFrames();
     })();
   </script>
