@@ -522,6 +522,15 @@
       margin: 0 auto;
     }
 
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
     .email-input {
       flex: 1;
       padding: 0.75rem 1rem;
@@ -881,6 +890,15 @@
             required
             autocomplete="email"
           >
+          <input
+            type="text"
+            id="website"
+            name="website"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+            class="hp-field"
+          >
           <button type="submit" class="submit-btn" id="submitBtn">Join Waitlist</button>
         </form>
         <div id="formMessage" class="form-message hidden"></div>
@@ -913,6 +931,7 @@
       const submitBtn = document.getElementById('submitBtn');
       const formMessage = document.getElementById('formMessage');
       const emailInput = document.getElementById('email');
+      const honeypotInput = document.getElementById('website');
 
       const originalBtnText = submitBtn.textContent;
 
@@ -956,7 +975,7 @@
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email: email }),
+            body: JSON.stringify({ email: email, website: honeypotInput.value }),
           });
 
           if (!response.ok) {
