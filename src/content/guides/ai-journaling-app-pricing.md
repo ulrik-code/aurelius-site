@@ -56,7 +56,7 @@ A smaller number of apps charge more because they do more. This tier includes le
 
 At this price point, the AI should know who the person is after a month of use. It should reference previous entries, identify behavioral patterns, and produce feedback that couldn't have been written to anyone else. If an app charges $15/month and the responses still feel generic after 30 days, the pricing doesn't match the product.
 
-Aurelius sits at $6.99/week or $69.99/year. That's roughly $28/month at weekly pricing or about $5.80/month on the annual plan. The weekly option exists specifically so people can test without commitment. The annual price reflects the value of a system that compounds, the [longer someone uses it](/guides/ai-journaling-app-that-learns/), the more valuable it gets.
+Aurelius sits at $6.99/week or $149.99/year. That's roughly $28/month at weekly pricing or about $12.50/month on the annual plan. The weekly option exists specifically so people can test without commitment. The annual price reflects the value of a system that compounds, the [longer someone uses it](/guides/ai-journaling-app-that-learns/), the more valuable it gets.
 
 **Lifetime Deals ($50-200)**
 
@@ -146,9 +146,9 @@ The honest answer: AI journaling is worth paying for if the person actually jour
 
 ## How Aurelius Approaches This
 
-Aurelius costs $6.99/week or $69.99/year. Weekly pricing exists because the [first week should prove the value](/guides/can-ai-keep-you-accountable/). If someone journals every evening for seven days and the nightly judgment plus the [morning prompt framework](/guides/morning-evening-stoic-framework/) doesn't feel worth $6.99, they should stop. No annual lock-in, no sunk cost pressure.
+Aurelius costs $6.99/week or $149.99/year. Weekly pricing exists because the [first week should prove the value](/guides/can-ai-keep-you-accountable/). If someone journals every evening for seven days and the nightly judgment plus the [morning prompt framework](/guides/morning-evening-stoic-framework/) doesn't feel worth $6.99, they should stop. No annual lock-in, no sunk cost pressure.
 
-The annual price works out to about $5.80/month, which reflects the compound nature of the product. Someone who uses Aurelius for a year has a knowledge graph built from 365 entries. The AI knows their patterns intimately. The [weekly mirror narratives](/guides/journal-like-marcus-aurelius/) reference months of history. That depth of personalization is the product, and it only exists for committed users.
+The annual price works out to about $12.50/month, which reflects the compound nature of the product. Someone who uses Aurelius for a year has a knowledge graph built from 365 entries. The AI knows their patterns intimately. The [weekly mirror narratives](/guides/journal-like-marcus-aurelius/) reference months of history. That depth of personalization is the product, and it only exists for committed users.
 
 The pricing reflects real costs. Every nightly judgment is a frontier AI call with full knowledge graph context. Every morning prompt is generated from pattern analysis. The weekly mirror synthesizes seven days of entries and scores into a narrative that requires substantial compute. These aren't cheap operations, and the subscription covers them honestly without monetizing journal content or showing ads alongside someone's most private thoughts. The [privacy model](/guides/ai-journaling-privacy/) is part of what the price covers.
 

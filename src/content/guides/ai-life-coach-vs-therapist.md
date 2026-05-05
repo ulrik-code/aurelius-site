@@ -96,7 +96,7 @@ Let's talk money, because it matters.
 
 Therapy in the US runs $100-300 per session, depending on location, credentials, and whether insurance covers it. At weekly sessions, that's $400-1,200 per month. Many people can't afford this, which is a genuine structural problem in mental health care. Biweekly brings it to $200-600. Even with insurance, copays add up.
 
-AI coaching apps run $5-20 per month. Aurelius is $6.99/week or $69.99/year. That's roughly $28/month at the weekly rate — about the cost of a single therapy copay for many insurance plans.
+AI coaching apps run $5-20 per month. Aurelius is $6.99/week or $149.99/year. That's roughly $28/month at the weekly rate — about the cost of a single therapy copay for many insurance plans.
 
 The cost difference — roughly 95% cheaper — makes AI coaching accessible to people who genuinely cannot afford therapy. This is important, but it comes with a responsibility: AI tools must be clear about what they are and what they aren't. Cheap access to daily accountability is great. Cheap access to something pretending to be therapy is dangerous.
 
