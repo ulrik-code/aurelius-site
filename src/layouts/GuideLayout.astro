@@ -17,6 +17,33 @@ interface Props {
 const { title, subtitle, description, publishDate, readTime, slug, faq, allGuides } = Astro.props;
 const canonicalUrl = new URL(`/guides/${slug}/`, Astro.site);
 const ogImage = new URL(`/og/${slug}.png`, Astro.site);
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "datePublished": publishDate,
+  "dateModified": publishDate,
+  "author": {
+    "@type": "Person",
+    "name": "Ulrik Sparboe",
+    "url": "https://sparboesystems.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Aurelius Agent",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aureliusagent.com/aurelius-bust.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalUrl.href
+  },
+  "image": ogImage.href
+};
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -45,6 +72,9 @@ const ogImage = new URL(`/og/${slug}.png`, Astro.site);
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Article Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 
   <!-- FAQ Schema -->
   <FAQSchema questions={faq} />

@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aurelius | AI Accountability Partner Built on Stoic Philosophy</title>
-  <meta name="description" content="Journal daily. Get scored nightly. Face the truth weekly. Aurelius is your AI accountability partner — Stoic judgment, daily scoring, and weekly narratives that tell you what you won't tell yourself.">
-  <meta property="og:title" content="Aurelius — Your AI Accountability Partner">
+  <title>Aurelius Agent | AI Accountability Partner Built on Stoic Philosophy</title>
+  <meta name="description" content="Aurelius Agent is your AI accountability partner — Stoic judgment, daily scoring, and weekly narratives that tell you what you won't tell yourself. Journal daily. Get scored nightly. Face the truth weekly.">
+  <link rel="canonical" href="https://aureliusagent.com/">
+  <meta property="og:title" content="Aurelius Agent — Your AI Accountability Partner">
   <meta property="og:description" content="Journal daily. Get scored nightly. Face the truth weekly. A discipline system built on Stoic philosophy.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="aurelius-bust.png">
+  <meta property="og:url" content="https://aureliusagent.com/">
+  <meta property="og:site_name" content="Aurelius Agent">
+  <meta property="og:image" content="https://aureliusagent.com/aurelius-bust.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Aurelius — Your AI Accountability Partner">
+  <meta name="twitter:title" content="Aurelius Agent — Your AI Accountability Partner">
   <meta name="twitter:description" content="Journal daily. Get scored nightly. Face the truth weekly.">
+  <meta name="twitter:image" content="https://aureliusagent.com/aurelius-bust.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Geist:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
@@ -214,6 +218,14 @@
       margin-bottom: 1rem;
       text-transform: uppercase;
       text-align: left;
+    }
+
+    .wordmark-suffix {
+      font-size: 0.4em;
+      letter-spacing: 0.6em;
+      vertical-align: 0.4em;
+      opacity: 0.8;
+      margin-left: 0.1em;
     }
 
     .hero-headline {
@@ -749,6 +761,134 @@
       }
     }
   </style>
+
+  <!-- Schema.org structured data — Organization -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Aurelius Agent",
+    "alternateName": "Aurelius",
+    "url": "https://aureliusagent.com",
+    "logo": "https://aureliusagent.com/aurelius-bust.png",
+    "description": "AI accountability partner built on Stoic philosophy. Daily journal scoring, weekly Stoic judgment, and pattern recognition for people who want to keep promises to themselves.",
+    "founder": {
+      "@type": "Person",
+      "name": "Ulrik Sparboe"
+    },
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Sparboe Systems",
+      "url": "https://sparboesystems.com"
+    },
+    "sameAs": [
+      "https://sparboesystems.com"
+    ]
+  })} />
+
+  <!-- Schema.org structured data — SoftwareApplication -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Aurelius Agent",
+    "applicationCategory": "LifestyleApplication",
+    "applicationSubCategory": "Journaling",
+    "operatingSystem": "iOS 16+",
+    "description": "Stoic accountability partner for iOS. Reads your journal entries, scores Energy/Focus/Physical/Satisfaction, audits intentions against actions, and delivers weekly Stoic judgment of patterns you might not see yourself.",
+    "url": "https://aureliusagent.com",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Weekly subscription",
+        "price": "6.99",
+        "priceCurrency": "USD",
+        "category": "Subscription"
+      },
+      {
+        "@type": "Offer",
+        "name": "Annual subscription",
+        "price": "149.99",
+        "priceCurrency": "USD",
+        "category": "Subscription"
+      }
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "Sparboe Systems",
+      "url": "https://sparboesystems.com"
+    }
+  })} />
+
+  <!-- Schema.org structured data — FAQPage -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Aurelius Agent?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aurelius Agent is a Stoic accountability partner for iOS. It reads your daily journal entries, scores Energy, Focus, Physical, and Satisfaction, compares stated intentions against actions, and delivers a weekly Stoic judgment of patterns you might not see yourself."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I stop breaking promises to myself?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Track the gap between stated intentions and actions instead of just tracking habits. The Stoics called this prosoche — continuous self-examination. Aurelius Agent scores the daily delta between what you said you would do and what you actually did, so the pattern becomes visible instead of forgettable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is an AI coach that pushes back instead of validating me?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most AI journaling apps default to affirmation because honest feedback drives churn. Aurelius Agent is built around Stoic judgment: it names the gap between intention and action without softening it. The design assumption is that growth requires honesty, not encouragement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a journaling app that asks hard questions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Look for apps that read your prior entries and surface patterns, rather than apps that prompt you with static questions. Aurelius Agent uses your accumulated entries to surface follow-ups specific to your behavior — for example, calling out a recurring avoidance you have documented but have not named."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best Stoic accountability app for 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aurelius Agent is positioned specifically as a Stoic accountability partner: daily scoring, evening review based on Marcus Aurelius's practice, and weekly narratives that confront drift. Other Stoic-themed apps (Stoic, Stoa, Daily Stoic) focus on meditation or quotes rather than accountability."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are there alternatives to the Stoic app for daily reflection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most alternatives focus on meditation (Stoa), daily quotes (Daily Stoic), or general journaling (Day One, Reflectly). Aurelius Agent is the alternative when the goal is accountability — it audits your week against your stated principles instead of providing reflection prompts only."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there an iOS journal app with AI feedback?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aurelius Agent on iOS provides daily AI scoring across Energy, Focus, Physical, and Satisfaction plus a Stoic judgment of the gap between intentions and actions. Unlike Reflection or Rosebud, the feedback is structurally honest rather than supportive — the app is designed to confront, not comfort."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Aurelius Agent different from Stoic, StoicMentor, or Rosebud?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Stoic and Daily Stoic are content brands (quotes, meditations). StoicMentor is an AI Marcus Aurelius character. Rosebud asks empathetic follow-up questions. Aurelius Agent is structured around Stoic accountability mechanics specifically — intention-action audit, daily scoring, weekly judgment narrative — not affirmation, not roleplay."
+        }
+      }
+    ]
+  })} />
 </head>
 <body>
   <!-- Nav -->
@@ -768,7 +908,7 @@
     <section class="hero">
       <div class="hero-left">
         <div class="hero-identity">
-          <h1 class="wordmark">Aurelius</h1>
+          <h1 class="wordmark">Aurelius<span class="wordmark-suffix"> Agent</span></h1>
           <p class="hero-headline">Your AI accountability partner. Built on Stoic philosophy.</p>
           <p class="hero-subheadline">Journal daily. Get scored nightly. Face the truth weekly.</p>
         </div>
