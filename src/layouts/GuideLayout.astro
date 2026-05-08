@@ -2,6 +2,14 @@
 import FAQSchema from '../components/FAQSchema.astro';
 import WaitlistCTA from '../components/WaitlistCTA.astro';
 import GuideNav from '../components/GuideNav.astro';
+import RelatedGuides from '../components/RelatedGuides.astro';
+
+interface GuideRef {
+  slug: string;
+  title: string;
+  description?: string;
+  readTime?: string;
+}
 
 interface Props {
   title: string;
@@ -11,10 +19,11 @@ interface Props {
   readTime: string;
   slug: string;
   faq: Array<{ question: string; answer: string }>;
-  allGuides: Array<{ slug: string; title: string }>;
+  allGuides: GuideRef[];
+  related?: Array<{ slug: string; title: string; description: string; readTime: string }>;
 }
 
-const { title, subtitle, description, publishDate, readTime, slug, faq, allGuides } = Astro.props;
+const { title, subtitle, description, publishDate, readTime, slug, faq, allGuides, related = [] } = Astro.props;
 const canonicalUrl = new URL(`/guides/${slug}/`, Astro.site);
 const ogImage = new URL(`/og/${slug}.png`, Astro.site);
 
@@ -108,6 +117,8 @@ const articleSchema = {
       </div>
 
       <WaitlistCTA slug={slug} />
+
+      <RelatedGuides related={related} />
 
       <GuideNav currentSlug={slug} allGuides={allGuides} />
     </article>

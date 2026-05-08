@@ -1,3 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+
+const featuredSlugs = [
+  'ai-journaling-for-men',
+  'journal-like-marcus-aurelius',
+  'philosophical-accountability',
+  'ai-reflection-scoring',
+];
+
+const allGuides = await getCollection('guides');
+const guidesBySlug = new Map(allGuides.map((g) => [g.id, g.data]));
+const featuredGuides = featuredSlugs
+  .map((slug) => {
+    const data = guidesBySlug.get(slug);
+    return data ? { slug, title: data.title, description: data.description, readTime: data.readTime } : null;
+  })
+  .filter((g): g is NonNullable<typeof g> => Boolean(g));
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -505,6 +524,77 @@
 
     /* ── Pricing (removed — waitlist only) ── */
 
+    /* ── Featured Guides ── */
+    .featured-guides {
+      padding: 3.5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    .featured-card {
+      display: block;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1.5rem 1.5rem 1.25rem;
+      text-decoration: none;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+
+    .featured-card:hover {
+      border-color: var(--card-border-hover);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .featured-card h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--accent-teal);
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+
+    .featured-card p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 0.75rem;
+    }
+
+    .featured-card .read-time {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .featured-all {
+      display: inline-block;
+      margin-top: 2rem;
+      color: var(--accent-teal);
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 1px solid rgba(94, 184, 199, 0.3);
+      padding-bottom: 2px;
+      transition: border-color 0.2s ease;
+    }
+
+    .featured-all:hover {
+      border-color: var(--accent-teal);
+    }
+
     /* ── Final CTA ── */
     .final-cta {
       text-align: center;
@@ -717,11 +807,15 @@
         font-size: 1.75rem;
       }
 
-      .problem, .solution, .timeline-section, .features-section, .final-cta {
+      .problem, .solution, .timeline-section, .features-section, .featured-guides, .final-cta {
         padding: 2.5rem 1.5rem;
       }
 
       .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1011,6 +1105,24 @@
           <p class="feature-description">Run it on your infrastructure. Your API keys. Your data. Zero lock-in.</p>
         </div>
       </div>
+    </section>
+
+    <!-- Featured Guides -->
+    <section class="featured-guides">
+      <h2 class="section-heading">Read Before You Sign Up</h2>
+      <p class="section-subtitle">Long-form guides on AI journaling, Stoic accountability, and the practice behind Aurelius Agent.</p>
+
+      <div class="featured-grid">
+        {featuredGuides.map((g) => (
+          <a href={`/guides/${g.slug}/`} class="featured-card">
+            <h3>{g.title}</h3>
+            <p>{g.description}</p>
+            <span class="read-time">{g.readTime}</span>
+          </a>
+        ))}
+      </div>
+
+      <a href="/guides/" class="featured-all">See all guides →</a>
     </section>
 
     <!-- Waitlist CTA -->

@@ -17,7 +17,11 @@ const allGuidesRaw = await getCollection('guides');
 const tierOrder = { 'category-defining': 0, 'high-intent': 1, 'long-tail': 2 };
 const allGuides = allGuidesRaw
   .sort((a, b) => tierOrder[a.data.tier] - tierOrder[b.data.tier])
-  .map((g) => ({ slug: g.id, title: g.data.title }));
+  .map((g) => ({ slug: g.id, title: g.data.title, description: g.data.description, readTime: g.data.readTime }));
+
+const related = (guide.data.relatedGuides ?? [])
+  .map((slug) => allGuides.find((g) => g.slug === slug))
+  .filter((g): g is NonNullable<typeof g> => Boolean(g));
 ---
 
 <GuideLayout
@@ -29,6 +33,7 @@ const allGuides = allGuidesRaw
   slug={guide.id}
   faq={guide.data.faq}
   allGuides={allGuides}
+  related={related}
 >
   <Content />
 </GuideLayout>
