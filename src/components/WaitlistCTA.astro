@@ -8,7 +8,7 @@ const utmUrl = `https://n8n-u6v4.onrender.com/webhook/aurelius-waitlist?utm_sour
 <aside class="cta-box">
   <div class="cta-inner">
     <h3>Aurelius is in early access</h3>
-    <p>An AI accountability partner built on Stoic philosophy. Journal daily, get scored nightly, face the truth weekly.</p>
+    <p>An AI accountability partner built on Stoic philosophy. Built to keep you honest when motivation fades.</p>
     <form action={utmUrl} method="POST" class="waitlist-form">
       <input
         type="email"
@@ -34,9 +34,11 @@ const utmUrl = `https://n8n-u6v4.onrender.com/webhook/aurelius-waitlist?utm_sour
   .cta-box {
     margin: 3rem 0;
     padding: 2rem;
-    background: rgba(94, 184, 199, 0.06);
-    border: 1px solid rgba(94, 184, 199, 0.2);
-    border-radius: 12px;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(212, 165, 0, 0.12), transparent 18rem),
+      rgba(94, 184, 199, 0.045);
+    border: 1px solid rgba(212, 165, 0, 0.2);
+    border-radius: 18px;
   }
   .cta-inner {
     max-width: 480px;
@@ -73,7 +75,7 @@ const utmUrl = `https://n8n-u6v4.onrender.com/webhook/aurelius-waitlist?utm_sour
     padding: 0.75rem 1rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    border-radius: 999px;
     color: #f0f0f0;
     font-family: 'Geist', sans-serif;
     font-size: 0.9rem;
@@ -82,15 +84,16 @@ const utmUrl = `https://n8n-u6v4.onrender.com/webhook/aurelius-waitlist?utm_sour
     color: #555;
   }
   .email-input:focus {
-    outline: none;
-    border-color: rgba(94, 184, 199, 0.5);
+    outline: 2px solid rgba(212, 165, 0, 0.8);
+    outline-offset: 2px;
+    border-color: rgba(212, 165, 0, 0.55);
   }
   .cta-button {
     padding: 0.75rem 1.5rem;
     background: #d4a500;
     color: #0e1016;
     border: none;
-    border-radius: 8px;
+    border-radius: 999px;
     font-family: 'Geist', sans-serif;
     font-weight: 600;
     font-size: 0.9rem;
@@ -101,9 +104,23 @@ const utmUrl = `https://n8n-u6v4.onrender.com/webhook/aurelius-waitlist?utm_sour
   .cta-button:hover {
     background: #c49800;
   }
+  .cta-button:focus-visible {
+    outline: 2px solid rgba(212, 165, 0, 0.8);
+    outline-offset: 2px;
+  }
   @media (max-width: 520px) {
+    .cta-box {
+      padding: 1.35rem;
+      border-radius: 16px;
+    }
     .waitlist-form {
       flex-direction: column;
+    }
+    .email-input,
+    .cta-button {
+      width: 100%;
+      min-height: 48px;
+      text-align: center;
     }
   }
 </style>

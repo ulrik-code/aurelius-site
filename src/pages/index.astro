@@ -23,17 +23,17 @@ const featuredGuides = featuredSlugs
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aurelius Agent | AI Accountability Partner Built on Stoic Philosophy</title>
-  <meta name="description" content="Aurelius Agent is your AI accountability partner — Stoic judgment, daily scoring, and weekly narratives that tell you what you won't tell yourself. Journal daily. Get scored nightly. Face the truth weekly.">
+  <meta name="description" content="Aurelius Agent is your AI accountability partner — Stoic judgment, daily scoring, and weekly narratives that tell you what you won't tell yourself.">
   <link rel="canonical" href="https://aureliusagent.com/">
   <meta property="og:title" content="Aurelius Agent — Your AI Accountability Partner">
-  <meta property="og:description" content="Journal daily. Get scored nightly. Face the truth weekly. A discipline system built on Stoic philosophy.">
+  <meta property="og:description" content="A discipline system built on Stoic philosophy. Aurelius makes sure you don't quit.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aureliusagent.com/">
   <meta property="og:site_name" content="Aurelius Agent">
   <meta property="og:image" content="https://aureliusagent.com/aurelius-bust.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Aurelius Agent — Your AI Accountability Partner">
-  <meta name="twitter:description" content="Journal daily. Get scored nightly. Face the truth weekly.">
+  <meta name="twitter:description" content="A discipline system built on Stoic philosophy. Aurelius makes sure you don't quit.">
   <meta name="twitter:image" content="https://aureliusagent.com/aurelius-bust.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,6 +47,7 @@ const featuredGuides = featuredSlugs
 
     :root {
       --bg: #0e1016;
+      --bg-deep: #07080c;
       --text: #f0f0f0;
       --text-muted: #888;
       --accent-teal: #5eb8c7;
@@ -66,11 +67,21 @@ const featuredGuides = featuredSlugs
 
     body {
       font-family: var(--font);
-      background-color: var(--bg);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(94, 184, 199, 0.08), transparent 30rem),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible {
+      outline: 2px solid var(--accent-gold);
+      outline-offset: 3px;
     }
 
     .sr-only {
@@ -96,9 +107,10 @@ const featuredGuides = featuredSlugs
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(14, 16, 22, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(7, 8, 12, 0.74);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       transition: background 0.3s ease;
     }
 
@@ -136,15 +148,17 @@ const featuredGuides = featuredSlugs
       font-size: 0.95rem;
       font-weight: 600;
       padding: 0.5rem 1.25rem;
-      border-radius: 4px;
-      transition: background-color 0.2s ease, color 0.2s ease;
-      background: var(--accent-teal);
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      background: linear-gradient(135deg, var(--accent-gold), #f0cf79);
       color: var(--bg);
       border: none;
+      box-shadow: 0 12px 30px rgba(212, 165, 0, 0.18);
     }
 
     .nav-btn:hover {
-      background: #4da3b2;
+      background: linear-gradient(135deg, #e5bc44, var(--accent-gold-hover));
+      transform: translateY(-1px);
     }
 
     /* ── Sections ── */
@@ -174,7 +188,7 @@ const featuredGuides = featuredSlugs
     .hero {
       display: flex;
       align-items: flex-start;
-      gap: 2rem;
+      gap: clamp(1.75rem, 5vw, 4rem);
       padding: 10rem 3rem 3rem;
       max-width: 1200px;
       margin: 0 auto;
@@ -200,7 +214,7 @@ const featuredGuides = featuredSlugs
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      max-width: 420px;
+      max-width: 470px;
       z-index: 1;
     }
 
@@ -230,7 +244,7 @@ const featuredGuides = featuredSlugs
 
     .wordmark {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 3.5rem;
+      font-size: clamp(3.2rem, 6vw, 4.7rem);
       font-weight: 300;
       letter-spacing: 0.35em;
       color: var(--accent-teal);
@@ -249,7 +263,7 @@ const featuredGuides = featuredSlugs
 
     .hero-headline {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-size: clamp(1.65rem, 3vw, 2.35rem);
       font-weight: 400;
       line-height: 1.4;
       margin-bottom: 0.5rem;
@@ -313,17 +327,20 @@ const featuredGuides = featuredSlugs
       font-size: 1.05rem;
       font-family: var(--font);
       font-weight: 600;
-      background: var(--accent-teal);
+      background: linear-gradient(135deg, var(--accent-gold), #f0cf79);
       color: var(--bg);
       border: none;
-      border-radius: 4px;
+      border-radius: 999px;
       text-decoration: none;
       cursor: pointer;
-      transition: background-color 0.2s ease;
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 18px 44px rgba(212, 165, 0, 0.2);
     }
 
     .btn-gold:hover {
-      background: #4da3b2;
+      background: linear-gradient(135deg, #e5bc44, var(--accent-gold-hover));
+      transform: translateY(-1px);
+      box-shadow: 0 22px 54px rgba(212, 165, 0, 0.28);
     }
 
     .btn-outline {
@@ -598,9 +615,25 @@ const featuredGuides = featuredSlugs
     /* ── Final CTA ── */
     .final-cta {
       text-align: center;
-      padding: 3.5rem 2rem;
-      max-width: 700px;
-      margin: 0 auto;
+      padding: 4rem 2rem;
+      max-width: 760px;
+      margin: 0 auto 2rem;
+      position: relative;
+      isolation: isolate;
+      scroll-margin-top: 5.5rem;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 1rem;
+      border: 1px solid rgba(212, 165, 0, 0.16);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(212, 165, 0, 0.12), transparent 22rem),
+        rgba(255, 255, 255, 0.018);
+      pointer-events: none;
+      z-index: -1;
     }
 
     .final-cta h2 {
@@ -620,7 +653,7 @@ const featuredGuides = featuredSlugs
     .form-row {
       display: flex;
       gap: 0.75rem;
-      max-width: 400px;
+      max-width: 460px;
       margin: 0 auto;
     }
 
@@ -638,9 +671,9 @@ const featuredGuides = featuredSlugs
       padding: 0.75rem 1rem;
       font-size: 0.9rem;
       font-family: var(--font);
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
       color: var(--text);
       outline: none;
       transition: box-shadow 0.2s ease, border-color 0.2s ease;
@@ -660,18 +693,19 @@ const featuredGuides = featuredSlugs
       font-size: 0.9rem;
       font-family: var(--font);
       font-weight: 500;
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 4px;
-      color: var(--text-muted);
+      background: linear-gradient(135deg, var(--accent-gold), #f0cf79);
+      border: 1px solid rgba(212, 165, 0, 0.45);
+      border-radius: 999px;
+      color: var(--bg);
       cursor: pointer;
-      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
       white-space: nowrap;
     }
 
     .submit-btn:hover:not(:disabled) {
-      border-color: var(--accent-teal);
-      color: var(--accent-teal);
+      border-color: rgba(240, 207, 121, 0.65);
+      background: linear-gradient(135deg, #e5bc44, var(--accent-gold-hover));
+      color: var(--bg);
     }
 
     .submit-btn:disabled {
@@ -747,80 +781,159 @@ const featuredGuides = featuredSlugs
 
     @media (max-width: 768px) {
       nav {
-        padding: 1rem 1.5rem;
+        padding: 0.75rem 1rem;
+        min-height: 64px;
+      }
+
+      .nav-links {
+        gap: 0.75rem;
       }
 
       .nav-link {
         display: none;
       }
 
+      .nav-btn {
+        font-size: 0.82rem;
+        padding: 0.52rem 0.9rem;
+      }
+
       .logo-img {
-        height: 50px;
+        height: 38px;
       }
 
       .hero {
         flex-direction: column;
-        padding: 7rem 1.5rem 3rem;
+        gap: 1.1rem;
+        padding: 5.35rem 1rem 2.15rem;
         text-align: center;
+        min-height: auto;
+      }
+
+      .hero::after {
+        width: 120%;
+        height: 48%;
+        top: 28%;
+        right: -35%;
+        opacity: 0.8;
       }
 
       .hero-left {
-        align-items: center;
+        display: contents;
+      }
+
+      .hero-right {
+        order: 2;
+        width: 100%;
       }
 
       .hero-identity {
         text-align: center;
+        margin-bottom: 1.4rem;
+        order: 1;
+        width: 100%;
       }
 
       .hero-action {
         align-items: center;
         text-align: center;
+        gap: 0.35rem;
+        width: 100%;
+        order: 3;
       }
 
       .wordmark {
-        font-size: 2.5rem;
-        letter-spacing: 0.25em;
+        font-size: clamp(2.2rem, 13vw, 3rem);
+        letter-spacing: 0.16em;
         text-align: center;
+        margin-bottom: 0.8rem;
+        transform: translateX(0.08em);
+      }
+
+      .wordmark-suffix {
+        display: block;
+        font-size: 0.34em;
+        letter-spacing: 0.48em;
+        margin: 0.15rem 0 0;
+        transform: translateX(0.24em);
       }
 
       .hero-headline {
-        font-size: 1.35rem;
+        font-size: clamp(1.35rem, 6.2vw, 1.75rem);
+        line-height: 1.18;
+        max-width: 21rem;
+        margin: 0 auto 0.65rem;
+        text-align: center;
       }
 
       .hero-subheadline {
         white-space: normal;
+        font-size: 0.96rem;
+        max-width: 19rem;
+        margin: 0 auto;
+      }
+
+      .hero-hook-setup,
+      .hero-hook-punch {
+        font-size: 1rem;
+        max-width: 20rem;
       }
 
       .hero-image {
-        max-width: 300px;
+        max-width: min(70vw, 250px);
+        margin: 0 auto;
+      }
+
+      .hero-image-wrapper::before {
+        width: 78%;
+        height: 78%;
+        filter: blur(28px);
       }
 
       .btn-gold, .btn-outline {
-        width: 100%;
+        width: min(100%, 21rem);
         text-align: center;
+        padding: 0.95rem 1.4rem;
       }
 
       .section-heading,
       .problem h2,
       .solution h2,
       .final-cta h2 {
-        font-size: 1.75rem;
+        font-size: clamp(1.85rem, 9vw, 2.25rem);
+        line-height: 1.08;
+      }
+
+      .section-subtitle,
+      .final-cta .final-subtext {
+        font-size: 0.98rem;
+        margin-bottom: 1.75rem;
       }
 
       .problem, .solution, .timeline-section, .features-section, .featured-guides, .final-cta {
-        padding: 2.5rem 1.5rem;
+        padding: 2.35rem 1rem;
       }
 
       .features-grid {
         grid-template-columns: 1fr;
+        gap: 0.85rem;
       }
 
       .featured-grid {
         grid-template-columns: 1fr;
+        gap: 0.85rem;
       }
 
-      .feature-card {
+      .feature-card,
+      .featured-card {
         min-height: auto;
+        padding: 1.3rem 1.15rem;
+        border-radius: 14px;
+      }
+
+      .feature-title,
+      .featured-card h3 {
+        font-size: 1.25rem;
       }
 
       .timeline::before {
@@ -833,25 +946,65 @@ const featuredGuides = featuredSlugs
 
       .timeline-step {
         padding-left: 0;
-        padding: 1.5rem;
+        padding: 1.15rem;
+        margin-bottom: 0.85rem;
         background: var(--card-bg);
         border: 1px solid var(--card-border);
-        border-radius: 8px;
+        border-radius: 14px;
       }
 
       .timeline-step::before {
         display: none;
       }
 
+      .final-cta {
+        margin-bottom: 1rem;
+      }
+
+      .final-cta::before {
+        inset: 0.6rem;
+        border-radius: 22px;
+      }
+
       .form-row {
         flex-direction: column;
+        max-width: 100%;
+      }
+
+      .email-input,
+      .submit-btn {
+        width: 100%;
+        min-height: 48px;
+        text-align: center;
       }
 
       footer {
         flex-direction: column;
         gap: 1rem;
         text-align: center;
-        padding: 2rem 1.5rem;
+        padding: 2rem 1rem;
+      }
+    }
+
+    @media (max-width: 390px) {
+      nav {
+        padding-inline: 0.75rem;
+      }
+
+      .logo-img {
+        height: 34px;
+      }
+
+      .nav-btn {
+        padding-inline: 0.78rem;
+      }
+
+      .hero {
+        padding-top: 5rem;
+      }
+
+      .wordmark {
+        font-size: 2.12rem;
       }
     }
   </style>
@@ -1004,7 +1157,6 @@ const featuredGuides = featuredSlugs
         <div class="hero-identity">
           <h1 class="wordmark">Aurelius<span class="wordmark-suffix"> Agent</span></h1>
           <p class="hero-headline">Your AI accountability partner. Built on Stoic philosophy.</p>
-          <p class="hero-subheadline">Journal daily. Get scored nightly. Face the truth weekly.</p>
         </div>
         <div class="hero-action">
           <p class="hero-hook-setup">Most people quit journaling in two weeks.</p>
