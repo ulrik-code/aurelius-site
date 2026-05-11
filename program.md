@@ -1,19 +1,19 @@
 # Objective
-Refine the Aurelius landing page at `aureliusagent.com` for a premium mobile-first experience that keeps waitlist signup as the primary conversion path before channel/account warmup.
+Trim the Aurelius landing page after the hero so mobile visitors get a cleaner, shorter path to the waitlist with smooth premium glow transitions.
 
 # Constraints
-Allowed repo: `/Users/captiansparboe/clawd/projects/aurelius-site` cloned from `ulrik-code/aurelius-site`.
-Allowed files: `src/pages/index.astro`, `src/components/WaitlistCTA.astro` only unless discovery proves a supporting style/layout file must change.
-Allowed changes: responsive spacing, typography, nav density, hero stacking, visual polish, waitlist CTA prominence, form mobile ergonomics, accessible focus states, and minor copy tightening that preserves Aurelius positioning.
-Forbidden actions: no production deploy, no webhook/backend changes, no deletion of AEO guide pages, no secrets handling, no force push to `master`, no changes to pricing/subscription claims, no app/API changes.
-Branch discipline: create and work on a `vex/aurelius-mobile-waitlist` branch before implementation.
+Allowed repo: `/Users/captiansparboe/clawd/projects/aurelius-site` for `aureliusagent.com`.
+Allowed files: `src/pages/index.astro`, `src/components/WaitlistCTA.astro`, and this `program.md` contract.
+Allowed changes: remove or condense post-hero landing-page content, preserve guide routes, smooth yellow/gold glow gradients, keep waitlist signup as the primary conversion path.
+Forbidden actions: no webhook/backend changes, no deletion of guide source pages, no secrets handling, no pricing/subscription changes, no app/API changes.
+Deployment: user requested seeing it live on the domain; merge/deploy is allowed after build/static validation.
 
 # Execution
 From `/Users/captiansparboe/clawd/projects/aurelius-site` run:
 1. `npm run build`
-2. Mobile QA at widths 375x667, 390x844, and 430x932 using Playwright or browser automation.
-3. Static check that the waitlist form still posts to `https://n8n-u6v4.onrender.com/webhook/aurelius-waitlist` and keeps the honeypot field.
-4. `git diff --check`
+2. `git diff --check`
+3. Static check that `https://n8n-u6v4.onrender.com/webhook/aurelius-waitlist` and the `website` honeypot field remain present.
+4. Verify live `https://aureliusagent.com/` after deployment contains the trimmed copy and no removed heavy sections.
 
 # Metric
-Pass if all verification commands succeed and mobile QA shows: no horizontal overflow at 375/390/430px, nav/logo/CTA are not clipped, hero headline and waitlist CTA are readable near the first screen, waitlist remains the dominant CTA, and no browser console errors are present.
+Pass if the landing page has roughly half as much post-hero content, the waitlist form still works structurally, the gold glow uses soft gradients without hard cutoffs, build/diff checks pass, and the deployed domain serves the new version.

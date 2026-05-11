@@ -1,21 +1,4 @@
 ---
-import { getCollection } from 'astro:content';
-
-const featuredSlugs = [
-  'ai-journaling-for-men',
-  'journal-like-marcus-aurelius',
-  'philosophical-accountability',
-  'ai-reflection-scoring',
-];
-
-const allGuides = await getCollection('guides');
-const guidesBySlug = new Map(allGuides.map((g) => [g.id, g.data]));
-const featuredGuides = featuredSlugs
-  .map((slug) => {
-    const data = guidesBySlug.get(slug);
-    return data ? { slug, title: data.title, description: data.description, readTime: data.readTime } : null;
-  })
-  .filter((g): g is NonNullable<typeof g> => Boolean(g));
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -366,8 +349,8 @@ const featuredGuides = featuredSlugs
     /* ── Problem ── */
     .problem {
       text-align: center;
-      padding: 3rem 2rem;
-      max-width: 700px;
+      padding: 2.5rem 2rem 1.5rem;
+      max-width: 640px;
       margin: 0 auto;
     }
 
@@ -375,7 +358,7 @@ const featuredGuides = featuredSlugs
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 2.25rem;
       font-weight: 400;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1rem;
       color: var(--text);
     }
 
@@ -404,8 +387,8 @@ const featuredGuides = featuredSlugs
     /* ── Solution ── */
     .solution {
       text-align: center;
-      padding: 3rem 2rem;
-      max-width: 800px;
+      padding: 1.5rem 2rem 2.5rem;
+      max-width: 720px;
       margin: 0 auto;
     }
 
@@ -425,7 +408,7 @@ const featuredGuides = featuredSlugs
 
     /* ── Timeline ── */
     .timeline-section {
-      padding: 3.5rem 2rem;
+      padding: 2.5rem 2rem;
       max-width: 800px;
       margin: 0 auto;
     }
@@ -495,8 +478,8 @@ const featuredGuides = featuredSlugs
 
     /* ── Features ── */
     .features-section {
-      padding: 3.5rem 2rem;
-      max-width: 1100px;
+      padding: 2.5rem 2rem;
+      max-width: 980px;
       margin: 0 auto;
     }
 
@@ -541,77 +524,6 @@ const featuredGuides = featuredSlugs
 
     /* ── Pricing (removed — waitlist only) ── */
 
-    /* ── Featured Guides ── */
-    .featured-guides {
-      padding: 3.5rem 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .featured-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-      margin-top: 2rem;
-      text-align: left;
-    }
-
-    .featured-card {
-      display: block;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 1.5rem 1.5rem 1.25rem;
-      text-decoration: none;
-      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
-    }
-
-    .featured-card:hover {
-      border-color: var(--card-border-hover);
-      background: rgba(255, 255, 255, 0.05);
-      transform: translateY(-2px);
-    }
-
-    .featured-card h3 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.4rem;
-      font-weight: 400;
-      color: var(--accent-teal);
-      line-height: 1.3;
-      margin-bottom: 0.5rem;
-    }
-
-    .featured-card p {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.95rem;
-      line-height: 1.55;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 0.75rem;
-    }
-
-    .featured-card .read-time {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .featured-all {
-      display: inline-block;
-      margin-top: 2rem;
-      color: var(--accent-teal);
-      text-decoration: none;
-      font-size: 0.95rem;
-      border-bottom: 1px solid rgba(94, 184, 199, 0.3);
-      padding-bottom: 2px;
-      transition: border-color 0.2s ease;
-    }
-
-    .featured-all:hover {
-      border-color: var(--accent-teal);
-    }
-
     /* ── Final CTA ── */
     .final-cta {
       text-align: center;
@@ -621,6 +533,7 @@ const featuredGuides = featuredSlugs
       position: relative;
       isolation: isolate;
       scroll-margin-top: 5.5rem;
+      overflow: visible;
     }
 
     .final-cta::before {
@@ -630,10 +543,20 @@ const featuredGuides = featuredSlugs
       border: 1px solid rgba(212, 165, 0, 0.16);
       border-radius: 28px;
       background:
-        radial-gradient(circle at 50% 0%, rgba(212, 165, 0, 0.12), transparent 22rem),
+        radial-gradient(circle at 50% -8%, rgba(212, 165, 0, 0.105) 0%, rgba(212, 165, 0, 0.055) 34%, rgba(212, 165, 0, 0.018) 68%, rgba(212, 165, 0, 0) 100%),
         rgba(255, 255, 255, 0.018);
       pointer-events: none;
       z-index: -1;
+    }
+
+    .final-cta::after {
+      content: '';
+      position: absolute;
+      inset: -2.5rem -1.5rem;
+      background: radial-gradient(ellipse at 50% 50%, rgba(212, 165, 0, 0.08) 0%, rgba(212, 165, 0, 0.035) 42%, rgba(212, 165, 0, 0) 78%);
+      filter: blur(34px);
+      pointer-events: none;
+      z-index: -2;
     }
 
     .final-cta h2 {
@@ -910,7 +833,7 @@ const featuredGuides = featuredSlugs
         margin-bottom: 1.75rem;
       }
 
-      .problem, .solution, .timeline-section, .features-section, .featured-guides, .final-cta {
+      .problem, .solution, .timeline-section, .features-section, .final-cta {
         padding: 2.35rem 1rem;
       }
 
@@ -919,20 +842,14 @@ const featuredGuides = featuredSlugs
         gap: 0.85rem;
       }
 
-      .featured-grid {
-        grid-template-columns: 1fr;
-        gap: 0.85rem;
-      }
-
       .feature-card,
-      .featured-card {
+      .compact-point {
         min-height: auto;
         padding: 1.3rem 1.15rem;
         border-radius: 14px;
       }
 
-      .feature-title,
-      .featured-card h3 {
+      .feature-title {
         font-size: 1.25rem;
       }
 
@@ -1177,19 +1094,14 @@ const featuredGuides = featuredSlugs
 
     <!-- Problem -->
     <section class="problem">
-      <h2>Most people journal into the void</h2>
-      <ul class="pain-points">
-        <li>No one reads it back to you</li>
-        <li>No one tracks whether you followed through</li>
-        <li>No one tells you the pattern you can't see yourself</li>
-      </ul>
-      <p class="problem-closer">Aurelius does.</p>
+      <h2>Most journaling fades because nothing answers back.</h2>
+      <p class="problem-closer">Aurelius keeps the mirror in front of you.</p>
     </section>
 
     <!-- Solution -->
     <section class="solution">
       <h2>A discipline system, not a chatbot</h2>
-      <p>Aurelius reads your journal entries, scores your day, compares your intentions against your actions, and delivers Stoic judgment. No sugarcoating. No affirmations. The truth about your week &mdash; told back to you like a mirror.</p>
+      <p>Aurelius scores the day, compares intention against action, and returns the truth without sugarcoating.</p>
     </section>
 
     <!-- How It Works -->
@@ -1213,16 +1125,6 @@ const featuredGuides = featuredSlugs
           <h3 class="timeline-label">Judgment</h3>
           <p class="timeline-desc">Aurelius reads everything. Names the gap between intention and action. One Stoic lens.</p>
         </div>
-        <div class="timeline-step">
-          <p class="timeline-time">Sunday</p>
-          <h3 class="timeline-label">Weekly Mirror</h3>
-          <p class="timeline-desc">Full week synthesis. Patterns, wins, drift. Not a summary &mdash; a confrontation.</p>
-        </div>
-        <div class="timeline-step">
-          <p class="timeline-time">Monday</p>
-          <h3 class="timeline-label">Goal Check</h3>
-          <p class="timeline-desc">Stale goals surfaced. Overdue commitments called out.</p>
-        </div>
       </div>
     </section>
 
@@ -1244,37 +1146,7 @@ const featuredGuides = featuredSlugs
           <h3 class="feature-title">Weekly Narrative</h3>
           <p class="feature-description">Your week synthesized as a story. Patterns you missed. Promises you broke. Wins you earned.</p>
         </div>
-        <div class="feature-card">
-          <h3 class="feature-title">Knowledge Graph</h3>
-          <p class="feature-description">Every entry makes every future entry more valuable. Compound interest on your thinking.</p>
-        </div>
-        <div class="feature-card">
-          <h3 class="feature-title">Full Privacy</h3>
-          <p class="feature-description">Your journal lives in YOUR Notion. We see scores, not souls.</p>
-        </div>
-        <div class="feature-card">
-          <h3 class="feature-title">Bring Your Own Keys</h3>
-          <p class="feature-description">Run it on your infrastructure. Your API keys. Your data. Zero lock-in.</p>
-        </div>
       </div>
-    </section>
-
-    <!-- Featured Guides -->
-    <section class="featured-guides">
-      <h2 class="section-heading">Read Before You Sign Up</h2>
-      <p class="section-subtitle">Long-form guides on AI journaling, Stoic accountability, and the practice behind Aurelius Agent.</p>
-
-      <div class="featured-grid">
-        {featuredGuides.map((g) => (
-          <a href={`/guides/${g.slug}/`} class="featured-card">
-            <h3>{g.title}</h3>
-            <p>{g.description}</p>
-            <span class="read-time">{g.readTime}</span>
-          </a>
-        ))}
-      </div>
-
-      <a href="/guides/" class="featured-all">See all guides →</a>
     </section>
 
     <!-- Waitlist CTA -->
