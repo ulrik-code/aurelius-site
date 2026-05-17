@@ -935,16 +935,23 @@
     }
 
     /* ─────────────────────────────────────────────────────────────
-       Mobile-first redesign (Stitch) — hides old desktop everywhere
+       Mobile-first redesign (Stitch) — shown on phones only.
+       Desktop keeps the original sales page above 768px.
        ───────────────────────────────────────────────────────────── */
-    body > nav,
-    body > main,
-    body > footer { display: none !important; }
-
     .mobile-version {
-      display: block;
+      display: none;
       min-height: 100vh;
       min-height: 100svh;
+    }
+
+    @media (max-width: 768px) {
+      body > nav,
+      body > main,
+      body > footer { display: none !important; }
+
+      .mobile-version {
+        display: block;
+      }
     }
 
     .mobile-version .m-shell {
