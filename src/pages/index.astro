@@ -436,20 +436,6 @@
       scroll-margin-top: 8rem;
     }
 
-    .desktop-how::before {
-      content: '';
-      position: absolute;
-      inset: 4.75rem 0 auto;
-      height: 380px;
-      border-radius: 999px;
-      background:
-        radial-gradient(circle at 36% 48%, rgba(31, 184, 172, 0.11) 0%, rgba(94, 184, 199, 0.06) 36%, rgba(94, 184, 199, 0.02) 68%, rgba(94, 184, 199, 0) 100%),
-        radial-gradient(circle at 68% 52%, rgba(199, 160, 89, 0.045) 0%, rgba(199, 160, 89, 0.02) 42%, rgba(199, 160, 89, 0) 100%);
-      filter: blur(16px);
-      pointer-events: none;
-      z-index: 0;
-    }
-
     .desktop-how-header {
       position: relative;
       z-index: 1;
@@ -513,48 +499,20 @@
       padding: 1.6rem 1.35rem 1.45rem;
       border: 1px solid rgba(94, 184, 199, 0.13);
       border-radius: 28px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.058), rgba(255, 255, 255, 0.018)),
-        radial-gradient(circle at 18% 0%, rgba(31, 184, 172, 0.10) 0%, rgba(94, 184, 199, 0.045) 34%, rgba(31, 184, 172, 0.016) 66%, rgba(31, 184, 172, 0.00) 100%),
-        radial-gradient(circle at 96% 18%, rgba(199, 160, 89, 0.045) 0%, rgba(199, 160, 89, 0.018) 46%, rgba(199, 160, 89, 0) 100%);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.058), rgba(255, 255, 255, 0.018));
       box-shadow: 0 18px 46px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.045);
       transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-    }
-
-    .desktop-step::before {
-      content: '';
-      position: absolute;
-      inset: -22% -18% auto;
-      height: 165px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 50% 50%, rgba(31, 184, 172, 0.11) 0%, rgba(94, 184, 199, 0.055) 42%, rgba(94, 184, 199, 0.018) 72%, rgba(94, 184, 199, 0) 100%);
-      filter: blur(22px);
-      pointer-events: none;
     }
 
     .desktop-step:hover {
       transform: translateY(-4px);
       border-color: rgba(94, 184, 199, 0.28);
-      box-shadow: 0 24px 58px rgba(0, 0, 0, 0.3), 0 0 32px rgba(31, 184, 172, 0.075), inset 0 1px 0 rgba(255, 255, 255, 0.065);
-    }
-
-    .desktop-step::after {
-      content: '';
-      position: absolute;
-      inset: auto -28% -42% 12%;
-      height: 140px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(31, 184, 172, 0.11) 0%, rgba(31, 184, 172, 0.045) 42%, rgba(31, 184, 172, 0.014) 72%, rgba(31, 184, 172, 0) 100%);
-      filter: blur(18px);
-      pointer-events: none;
+      box-shadow: 0 24px 58px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.065);
     }
 
     .desktop-step.is-final {
       border-color: rgba(94, 184, 199, 0.24);
-      background:
-        linear-gradient(180deg, rgba(31, 184, 172, 0.095), rgba(255, 255, 255, 0.026)),
-        radial-gradient(circle at 18% 0%, rgba(31, 184, 172, 0.13) 0%, rgba(94, 184, 199, 0.05) 38%, rgba(31, 184, 172, 0) 100%),
-        radial-gradient(circle at 92% 18%, rgba(199, 160, 89, 0.055) 0%, rgba(199, 160, 89, 0.018) 48%, rgba(199, 160, 89, 0) 100%);
+      background: linear-gradient(180deg, rgba(31, 184, 172, 0.055), rgba(255, 255, 255, 0.026));
     }
 
     .desktop-step-signal {

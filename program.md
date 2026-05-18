@@ -1,12 +1,12 @@
 # Objective
-Rebalance the desktop Aurelius “How It Works” cards away from overused gold by adding blue/teal atmospheric accents and softening any boxy/hard glow lines.
+Remove the desktop Aurelius “How It Works” background glow from the steps while keeping the section clean, teal-balanced, and non-boxy.
 
 # Constraints
 Allowed repo: `/Users/captiansparboe/clawd/projects/aurelius-site` for `aureliusagent.com`.
 Allowed files: `src/pages/index.astro` and this `program.md` contract.
 Allowed changes: desktop “how it works” markup/CSS, responsive CSS display rules, viewport-specific visibility, waitlist anchor/form compatibility.
 Forbidden actions: no webhook/backend changes, no deletion of guide source pages/routes, no secrets handling, no pricing/subscription changes, no mobile app/API changes.
-Branch isolation: work on `vex/aurelius-how-cards-teal-balance`; merge to `master` only after validation.
+Branch isolation: work on `vex/aurelius-remove-step-glow`; merge to `master` only after validation.
 
 # Execution
 From `/Users/captiansparboe/clawd/projects/aurelius-site` run:
