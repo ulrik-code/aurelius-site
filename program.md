@@ -1,12 +1,12 @@
 # Objective
-Polish the desktop Aurelius landing page “How It Works” cards so the section feels premium, directional, and visually integrated with the Stoic/imperial brand.
+Rebalance the desktop Aurelius “How It Works” cards away from overused gold by adding blue/teal atmospheric accents and softening any boxy/hard glow lines.
 
 # Constraints
 Allowed repo: `/Users/captiansparboe/clawd/projects/aurelius-site` for `aureliusagent.com`.
 Allowed files: `src/pages/index.astro` and this `program.md` contract.
-Allowed changes: desktop landing copy, desktop CTA styling, desktop “how it works” markup/CSS, responsive CSS display rules, viewport-specific visibility, waitlist anchor/form compatibility.
+Allowed changes: desktop “how it works” markup/CSS, responsive CSS display rules, viewport-specific visibility, waitlist anchor/form compatibility.
 Forbidden actions: no webhook/backend changes, no deletion of guide source pages/routes, no secrets handling, no pricing/subscription changes, no mobile app/API changes.
-Branch isolation: work on `vex/aurelius-how-cards-polish`; merge to `master` only after validation.
+Branch isolation: work on `vex/aurelius-how-cards-teal-balance`; merge to `master` only after validation.
 
 # Execution
 From `/Users/captiansparboe/clawd/projects/aurelius-site` run:
