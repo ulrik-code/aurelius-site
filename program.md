@@ -1,12 +1,12 @@
 # Objective
-Split the Aurelius landing page so desktop visitors see the existing desktop sales page and mobile visitors see the Stitch mobile-first sales page.
+Polish the desktop Aurelius landing page so the hero waitlist CTA is quieter, the form CTA has breathing room, and desktop visitors get a clear four-step “how it works” explanation adapted from the mobile page.
 
 # Constraints
 Allowed repo: `/Users/captiansparboe/clawd/projects/aurelius-site` for `aureliusagent.com`.
 Allowed files: `src/pages/index.astro` and this `program.md` contract.
-Allowed changes: responsive CSS display rules, viewport-specific visibility, waitlist anchor/form compatibility.
+Allowed changes: desktop landing copy, desktop CTA styling, desktop “how it works” markup/CSS, responsive CSS display rules, viewport-specific visibility, waitlist anchor/form compatibility.
 Forbidden actions: no webhook/backend changes, no deletion of guide source pages/routes, no secrets handling, no pricing/subscription changes, no mobile app/API changes.
-Branch isolation: work on `vex/desktop-mobile-landing-split`; open PR against `master` after validation.
+Branch isolation: work on `vex/aurelius-desktop-steps-polish`; merge to `master` only after validation.
 
 # Execution
 From `/Users/captiansparboe/clawd/projects/aurelius-site` run:
@@ -17,4 +17,4 @@ From `/Users/captiansparboe/clawd/projects/aurelius-site` run:
 5. Verify rendered output at mobile width (<=768px) hides desktop `nav/main/footer` and exposes `.mobile-version`.
 
 # Metric
-Pass if desktop width renders the desktop landing page, mobile width renders the Stitch mobile sales page, waitlist submission structure remains intact on both versions, and build/diff checks pass.
+Pass if desktop width renders the desktop landing page with a quieter hero waitlist CTA and visible four-step explanation before the final waitlist form, mobile width still renders the Stitch mobile sales page, waitlist submission structure remains intact on both versions, and build/diff checks pass.
