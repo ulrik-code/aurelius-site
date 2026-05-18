@@ -1,12 +1,12 @@
 # Objective
-Remove the desktop Aurelius “How It Works” background glow from the steps while keeping the section clean, teal-balanced, and non-boxy.
+Replace the default/missing browser tab favicon with the Aurelius bust icon and wire favicon tags explicitly in the landing page head.
 
 # Constraints
 Allowed repo: `/Users/captiansparboe/clawd/projects/aurelius-site` for `aureliusagent.com`.
-Allowed files: `src/pages/index.astro` and this `program.md` contract.
-Allowed changes: desktop “how it works” markup/CSS, responsive CSS display rules, viewport-specific visibility, waitlist anchor/form compatibility.
+Allowed files: `src/pages/index.astro`, `public/favicon.ico`, `public/favicon.svg`, generated public favicon PNG/touch icon assets, and this `program.md` contract.
+Allowed changes: favicon/head metadata only, plus generated icon assets derived from existing `public/aurelius-bust.png`.
 Forbidden actions: no webhook/backend changes, no deletion of guide source pages/routes, no secrets handling, no pricing/subscription changes, no mobile app/API changes.
-Branch isolation: work on `vex/aurelius-remove-step-glow`; merge to `master` only after validation.
+Branch isolation: work on `vex/aurelius-bust-favicon`; merge to `master` only after validation.
 
 # Execution
 From `/Users/captiansparboe/clawd/projects/aurelius-site` run:
