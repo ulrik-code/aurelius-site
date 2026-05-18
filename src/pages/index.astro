@@ -429,21 +429,35 @@
 
     /* ── Desktop How It Works ── */
     .desktop-how {
-      padding: 1rem 2rem 3.75rem;
-      max-width: 980px;
+      position: relative;
+      padding: 1.25rem 2rem 4.25rem;
+      max-width: 1120px;
       margin: 0 auto;
       scroll-margin-top: 8rem;
     }
 
+    .desktop-how::before {
+      content: '';
+      position: absolute;
+      inset: 4.75rem 1rem auto;
+      height: 360px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 50% 50%, rgba(199, 160, 89, 0.12), rgba(199, 160, 89, 0) 68%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
     .desktop-how-header {
+      position: relative;
+      z-index: 1;
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.35rem;
     }
 
     .desktop-how-eyebrow {
       font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--accent-gold);
       margin-bottom: 0.75rem;
@@ -451,57 +465,132 @@
 
     .desktop-how h2 {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 2.35rem;
+      font-size: clamp(2.35rem, 4vw, 3.2rem);
       font-weight: 400;
       color: var(--text);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.8rem;
     }
 
     .desktop-how-intro {
-      max-width: 620px;
+      max-width: 680px;
       margin: 0 auto;
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 1.08rem;
+      line-height: 1.7;
+    }
+
+    .desktop-steps-frame {
+      position: relative;
+      z-index: 1;
+    }
+
+    .desktop-steps-rail {
+      position: absolute;
+      left: 7%;
+      right: 7%;
+      top: 3.25rem;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(199, 160, 89, 0), rgba(199, 160, 89, 0.52), rgba(199, 160, 89, 0));
+      box-shadow: 0 0 26px rgba(199, 160, 89, 0.18);
+      pointer-events: none;
     }
 
     .desktop-steps {
       list-style: none;
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1rem;
+      gap: 1.15rem;
     }
 
     .desktop-step {
-      min-height: 210px;
-      padding: 1.45rem 1.35rem;
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.026);
+      position: relative;
+      overflow: hidden;
+      min-height: 250px;
+      padding: 1.6rem 1.35rem 1.45rem;
+      border: 1px solid rgba(199, 160, 89, 0.16);
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.072), rgba(255, 255, 255, 0.024)),
+        radial-gradient(circle at 20% 0%, rgba(199, 160, 89, 0.16), rgba(199, 160, 89, 0) 42%);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .desktop-step:hover {
+      transform: translateY(-4px);
+      border-color: rgba(199, 160, 89, 0.34);
+      box-shadow: 0 24px 58px rgba(0, 0, 0, 0.3), 0 0 34px rgba(199, 160, 89, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .desktop-step::after {
+      content: '';
+      position: absolute;
+      inset: auto -25% -38% 18%;
+      height: 120px;
+      background: radial-gradient(circle, rgba(31, 184, 172, 0.13), rgba(31, 184, 172, 0) 68%);
+      pointer-events: none;
+    }
+
+    .desktop-step.is-final {
+      border-color: rgba(199, 160, 89, 0.3);
+      background:
+        linear-gradient(180deg, rgba(199, 160, 89, 0.12), rgba(255, 255, 255, 0.03)),
+        radial-gradient(circle at 20% 0%, rgba(199, 160, 89, 0.22), rgba(199, 160, 89, 0) 44%);
+    }
+
+    .desktop-step-signal {
+      display: block;
+      width: 46px;
+      height: 1px;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--accent-gold), rgba(199, 160, 89, 0));
+      opacity: 0.76;
+    }
+
+    .desktop-step-orb {
+      position: absolute;
+      top: 3.03rem;
+      right: 1.35rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      box-shadow: 0 0 18px rgba(199, 160, 89, 0.62);
     }
 
     .desktop-step-num {
-      display: inline-block;
-      margin-bottom: 1.1rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      color: var(--accent-teal);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      margin-bottom: 1.15rem;
+      border-radius: 50%;
+      border: 1px solid rgba(199, 160, 89, 0.34);
+      background: rgba(199, 160, 89, 0.08);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--accent-gold);
     }
 
     .desktop-step-title {
+      position: relative;
+      z-index: 1;
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.45rem;
+      font-size: 1.55rem;
       font-weight: 400;
-      line-height: 1.2;
+      line-height: 1.18;
       color: var(--text);
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.7rem;
     }
 
     .desktop-step-desc {
-      font-size: 0.96rem;
-      line-height: 1.55;
-      color: var(--text-muted);
+      position: relative;
+      z-index: 1;
+      font-size: 0.98rem;
+      line-height: 1.58;
+      color: rgba(255, 255, 255, 0.7);
     }
 
     /* ── Timeline ── */
@@ -1588,28 +1677,39 @@
         <h2 id="desktop-how-title">A practice Aurelius can judge.</h2>
         <p class="desktop-how-intro">The desktop page gets the full rhythm: write the intention, tell the truth, work the goal, then let the system show you the pattern.</p>
       </div>
-      <ol class="desktop-steps">
-        <li class="desktop-step">
-          <span class="desktop-step-num">01</span>
-          <h3 class="desktop-step-title">Journal with intent.</h3>
-          <p class="desktop-step-desc">Start the day by naming the standard. End it by recording what actually happened.</p>
-        </li>
-        <li class="desktop-step">
-          <span class="desktop-step-num">02</span>
-          <h3 class="desktop-step-title">Talk with Aurelius.</h3>
-          <p class="desktop-step-desc">Get questioned in Marcus's voice: direct, useful, and more honest than kind.</p>
-        </li>
-        <li class="desktop-step">
-          <span class="desktop-step-num">03</span>
-          <h3 class="desktop-step-title">Work the goals.</h3>
-          <p class="desktop-step-desc">Aurelius remembers the commitments you made and compares them against the work you did.</p>
-        </li>
-        <li class="desktop-step">
-          <span class="desktop-step-num">04</span>
-          <h3 class="desktop-step-title">Receive Stoic judgment.</h3>
-          <p class="desktop-step-desc">Weekly analysis surfaces the drift, discipline, and excuses you stop noticing alone.</p>
-        </li>
-      </ol>
+      <div class="desktop-steps-frame">
+        <span class="desktop-steps-rail" aria-hidden="true"></span>
+        <ol class="desktop-steps">
+          <li class="desktop-step">
+            <span class="desktop-step-orb" aria-hidden="true"></span>
+            <span class="desktop-step-num">01</span>
+            <span class="desktop-step-signal" aria-hidden="true"></span>
+            <h3 class="desktop-step-title">Journal with intent.</h3>
+            <p class="desktop-step-desc">Start the day by naming the standard. End it by recording what actually happened.</p>
+          </li>
+          <li class="desktop-step">
+            <span class="desktop-step-orb" aria-hidden="true"></span>
+            <span class="desktop-step-num">02</span>
+            <span class="desktop-step-signal" aria-hidden="true"></span>
+            <h3 class="desktop-step-title">Talk with Aurelius.</h3>
+            <p class="desktop-step-desc">Get questioned in Marcus's voice: direct, useful, and more honest than kind.</p>
+          </li>
+          <li class="desktop-step">
+            <span class="desktop-step-orb" aria-hidden="true"></span>
+            <span class="desktop-step-num">03</span>
+            <span class="desktop-step-signal" aria-hidden="true"></span>
+            <h3 class="desktop-step-title">Work the goals.</h3>
+            <p class="desktop-step-desc">Aurelius remembers the commitments you made and compares them against the work you did.</p>
+          </li>
+          <li class="desktop-step is-final">
+            <span class="desktop-step-orb" aria-hidden="true"></span>
+            <span class="desktop-step-num">04</span>
+            <span class="desktop-step-signal" aria-hidden="true"></span>
+            <h3 class="desktop-step-title">Receive Stoic judgment.</h3>
+            <p class="desktop-step-desc">Weekly analysis surfaces the drift, discipline, and excuses you stop noticing alone.</p>
+          </li>
+        </ol>
+      </div>
     </section>
 
     <!-- Waitlist CTA -->
