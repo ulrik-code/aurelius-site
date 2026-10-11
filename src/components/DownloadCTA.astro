@@ -1,32 +1,11 @@
 ---
-interface Props {
-  slug: string;
-}
-const { slug } = Astro.props;
-const utmUrl = `https://n8n-u6v4.onrender.com/webhook/aurelius-waitlist?utm_source=guide&utm_medium=aeo&utm_campaign=${slug}`;
+import { APP_STORE_URL } from '../consts';
 ---
 <aside class="cta-box">
   <div class="cta-inner">
-    <h3>Aurelius is in early access</h3>
+    <h3>Aurelius is on the App Store</h3>
     <p>An AI accountability partner built on Stoic philosophy. Built to keep you honest when motivation fades.</p>
-    <form action={utmUrl} method="POST" class="waitlist-form">
-      <input
-        type="email"
-        name="email"
-        placeholder="your@email.com"
-        required
-        class="email-input"
-      />
-      <input
-        type="text"
-        name="website"
-        tabindex="-1"
-        autocomplete="off"
-        aria-hidden="true"
-        class="hp-field"
-      />
-      <button type="submit" class="cta-button">Join the Waitlist</button>
-    </form>
+    <a href={APP_STORE_URL} class="cta-button">Download on the App Store</a>
   </div>
 </aside>
 
@@ -58,37 +37,9 @@ const utmUrl = `https://n8n-u6v4.onrender.com/webhook/aurelius-waitlist?utm_sour
     margin-bottom: 1.25rem;
     line-height: 1.5;
   }
-  .waitlist-form {
-    display: flex;
-    gap: 0.5rem;
-  }
-  .hp-field {
-    position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
-  }
-  .email-input {
-    flex: 1;
-    padding: 0.75rem 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 999px;
-    color: #f0f0f0;
-    font-family: 'Geist', sans-serif;
-    font-size: 0.9rem;
-  }
-  .email-input::placeholder {
-    color: #555;
-  }
-  .email-input:focus {
-    outline: 2px solid rgba(212, 165, 0, 0.8);
-    outline-offset: 2px;
-    border-color: rgba(212, 165, 0, 0.55);
-  }
   .cta-button {
+    display: inline-block;
+    text-decoration: none;
     padding: 0.75rem 1.5rem;
     background: #d4a500;
     color: #0e1016;
@@ -113,10 +64,6 @@ const utmUrl = `https://n8n-u6v4.onrender.com/webhook/aurelius-waitlist?utm_sour
       padding: 1.35rem;
       border-radius: 16px;
     }
-    .waitlist-form {
-      flex-direction: column;
-    }
-    .email-input,
     .cta-button {
       width: 100%;
       min-height: 48px;

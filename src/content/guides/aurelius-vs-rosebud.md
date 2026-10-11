@@ -101,7 +101,7 @@ Be honest about which one you are. Then pick the tool that matches.
 
 ## Try It
 
-Aurelius Agent is on iOS. Join the waitlist on the home page and start the loop the day access opens.
+Aurelius Agent is on the App Store for iOS. Download it and start the loop today.
 
 The first week feels uncomfortable, because honest feedback always does at first. By week three, the structural cadence — write, score, read, repeat — turns into the kind of daily practice the Stoics actually ran. That is the goal.
 

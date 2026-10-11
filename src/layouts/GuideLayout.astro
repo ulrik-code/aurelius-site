@@ -1,6 +1,7 @@
 ---
 import FAQSchema from '../components/FAQSchema.astro';
-import WaitlistCTA from '../components/WaitlistCTA.astro';
+import DownloadCTA from '../components/DownloadCTA.astro';
+import { APP_STORE_URL } from '../consts';
 import GuideNav from '../components/GuideNav.astro';
 import RelatedGuides from '../components/RelatedGuides.astro';
 
@@ -93,7 +94,7 @@ const articleSchema = {
     <a href="/" class="nav-logo">Aurelius</a>
     <div class="nav-links">
       <a href="/guides/">Guides</a>
-      <a href="/#waitlist" class="nav-cta">Join Waitlist</a>
+      <a href={APP_STORE_URL} class="nav-cta">Download</a>
     </div>
   </nav>
 
@@ -116,7 +117,7 @@ const articleSchema = {
         <slot />
       </div>
 
-      <WaitlistCTA slug={slug} />
+      <DownloadCTA />
 
       <RelatedGuides related={related} />
 

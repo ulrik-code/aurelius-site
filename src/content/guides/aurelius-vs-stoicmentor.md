@@ -99,7 +99,7 @@ Both have a place. Be honest about which one you actually need.
 
 ## Try It
 
-Aurelius Agent ships on iOS. The waitlist is open at the home page, and early access is opening as the app moves through final App Store review.
+Aurelius Agent is on the App Store for iOS. Download it and write the first entry today.
 
 The first week is the hardest, because the feedback is unvarnished by design. The promise is: by week four, the patterns you have been refusing to see start showing up in writing, on a schedule, whether you ask or not.
 

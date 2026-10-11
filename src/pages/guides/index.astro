@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { APP_STORE_URL } from '../../consts';
 
 const guides = await getCollection('guides');
 
@@ -29,7 +30,7 @@ const grouped = Object.groupBy(sorted, (g) => g.data.tier);
     <a href="/" class="nav-logo">Aurelius</a>
     <div class="nav-links">
       <a href="/guides/" class="active">Guides</a>
-      <a href="/#waitlist" class="nav-cta">Join Waitlist</a>
+      <a href={APP_STORE_URL} class="nav-cta">Download</a>
     </div>
   </nav>
 
