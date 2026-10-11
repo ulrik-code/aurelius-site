@@ -216,27 +216,44 @@ import { APP_STORE_URL } from '../consts';
       margin-bottom: 2.5rem;
     }
 
-    /* Download sits in the hero, beside the bust: button plus a QR for the phone. */
+    /* Download card in the hero: QR for the phone in your hand, button for the one you're on. */
     .hero-download {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       gap: 1.5rem;
+      width: fit-content;
+      padding: 1.25rem 1.75rem 1.25rem 1.25rem;
+      border: 1px solid rgba(212, 165, 0, 0.22);
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(212, 165, 0, 0.08), transparent 16rem),
+        rgba(255, 255, 255, 0.02);
+    }
+
+    .hero-download-qr {
+      width: 148px;
+      height: 148px;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .hero-download-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.45rem;
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.2;
+    }
+
+    .hero-download-sub {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin: 0.35rem 0 1rem;
     }
 
     .hero-download .btn-gold {
-      padding: 1.05rem 2.1rem;
-      font-size: 1.1rem;
+      padding: 0.85rem 1.5rem;
+      font-size: 1rem;
       white-space: nowrap;
-    }
-
-    .qr-card-hero img {
-      width: 176px;
-      height: 176px;
-    }
-
-    .qr-card-hero .qr-caption {
-      font-size: 0.85rem;
     }
 
     .hero-right {
@@ -1540,13 +1557,14 @@ import { APP_STORE_URL } from '../consts';
       <div class="hero-left">
         <div class="hero-identity">
           <h1 class="wordmark">Aurelius<span class="sr-only"> Agent</span></h1>
-          <p class="hero-headline">Your AI accountability partner. Built on Stoic philosophy.</p>
+          <p class="hero-headline">Your AI accountability partner.<br>Built on Stoic philosophy.</p>
         </div>
         <div class="hero-download">
-          <a href={APP_STORE_URL} class="btn-gold">Download on the App Store</a>
-          <div class="qr-card qr-card-hero">
-            <img src="/app-store-qr.svg" alt="QR code linking to Aurelius Agent on the App Store" width="176" height="176">
-            <span class="qr-caption">Scan with your iPhone camera</span>
+          <img src="/app-store-qr.svg" alt="QR code linking to Aurelius Agent on the App Store" width="148" height="148" class="hero-download-qr">
+          <div class="hero-download-text">
+            <p class="hero-download-title">Get Aurelius on iPhone</p>
+            <p class="hero-download-sub">Scan with your camera, or tap below.</p>
+            <a href={APP_STORE_URL} class="btn-gold">Download on the App Store</a>
           </div>
         </div>
       </div>
