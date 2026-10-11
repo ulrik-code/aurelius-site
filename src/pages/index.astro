@@ -181,7 +181,7 @@ import { APP_STORE_URL } from '../consts';
     /* ── Hero ── */
     .hero {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: clamp(1.75rem, 5vw, 4rem);
       padding: 10rem 3rem 4rem;
       max-width: 1200px;
@@ -204,11 +204,11 @@ import { APP_STORE_URL } from '../consts';
     }
 
     .hero-left {
-      flex: 1.15;
+      flex: 1.3;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      max-width: 470px;
+      max-width: 580px;
       z-index: 1;
     }
 
@@ -216,15 +216,27 @@ import { APP_STORE_URL } from '../consts';
       margin-bottom: 2.5rem;
     }
 
-    .hero-action {
+    /* Download sits in the hero, beside the bust: button plus a QR for the phone. */
+    .hero-download {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.5rem;
     }
 
-    .hero-action .btn-gold {
-      margin-top: 0.75rem;
+    .hero-download .btn-gold {
+      padding: 1.05rem 2.1rem;
+      font-size: 1.1rem;
+      white-space: nowrap;
+    }
+
+    .qr-card-hero img {
+      width: 176px;
+      height: 176px;
+    }
+
+    .qr-card-hero .qr-caption {
+      font-size: 0.85rem;
     }
 
     .hero-right {
@@ -247,13 +259,6 @@ import { APP_STORE_URL } from '../consts';
       text-align: left;
     }
 
-    .wordmark-suffix {
-      font-size: 0.4em;
-      letter-spacing: 0.6em;
-      vertical-align: 0.58em;
-      opacity: 0.8;
-      margin-left: 0.1em;
-    }
 
     .hero-headline {
       font-family: 'Cormorant Garamond', Georgia, serif;
@@ -300,18 +305,17 @@ import { APP_STORE_URL } from '../consts';
       filter: drop-shadow(0 0 20px rgba(123, 212, 227, 0.11)) drop-shadow(0 0 50px rgba(123, 212, 227, 0.04));
     }
 
-    .hero-hook-setup {
-      font-size: 1.3rem;
-      font-weight: 400;
+    .final-hook {
+      font-size: 1.15rem;
       color: rgba(255, 255, 255, 0.5);
-      line-height: 1.4;
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
     }
 
-    .hero-hook-punch {
-      font-size: 1.3rem;
+    .final-hook span {
+      display: block;
       font-weight: 600;
       color: var(--accent-teal);
-      line-height: 1.4;
     }
 
     /* ── Buttons ── */
@@ -912,13 +916,6 @@ import { APP_STORE_URL } from '../consts';
         width: 100%;
       }
 
-      .hero-action {
-        align-items: center;
-        text-align: center;
-        gap: 0.28rem;
-        width: 100%;
-        order: 3;
-      }
 
       .wordmark {
         font-size: clamp(2.2rem, 13vw, 3rem);
@@ -928,13 +925,6 @@ import { APP_STORE_URL } from '../consts';
         transform: translateX(0.08em);
       }
 
-      .wordmark-suffix {
-        display: block;
-        font-size: 0.34em;
-        letter-spacing: 0.48em;
-        margin: 0.15rem 0 0;
-        transform: translateX(0.24em);
-      }
 
       .hero-headline {
         font-size: clamp(1.28rem, 5.8vw, 1.62rem);
@@ -951,11 +941,6 @@ import { APP_STORE_URL } from '../consts';
         margin: 0 auto;
       }
 
-      .hero-hook-setup,
-      .hero-hook-punch {
-        font-size: 1rem;
-        max-width: 20rem;
-      }
 
       .hero-image {
         max-width: min(60vw, 205px);
@@ -1554,13 +1539,15 @@ import { APP_STORE_URL } from '../consts';
     <section class="hero">
       <div class="hero-left">
         <div class="hero-identity">
-          <h1 class="wordmark">Aurelius<span class="wordmark-suffix"> Agent</span></h1>
+          <h1 class="wordmark">Aurelius<span class="sr-only"> Agent</span></h1>
           <p class="hero-headline">Your AI accountability partner. Built on Stoic philosophy.</p>
         </div>
-        <div class="hero-action">
-          <p class="hero-hook-setup">Most people quit journaling in two weeks.</p>
-          <p class="hero-hook-punch">Aurelius makes sure you don't.</p>
-          <a href={APP_STORE_URL} class="btn-gold btn-quiet">Download on the App Store</a>
+        <div class="hero-download">
+          <a href={APP_STORE_URL} class="btn-gold">Download on the App Store</a>
+          <div class="qr-card qr-card-hero">
+            <img src="/app-store-qr.svg" alt="QR code linking to Aurelius Agent on the App Store" width="176" height="176">
+            <span class="qr-caption">Scan with your iPhone camera</span>
+          </div>
         </div>
       </div>
       <div class="hero-right">
@@ -1618,6 +1605,7 @@ import { APP_STORE_URL } from '../consts';
 
     <!-- Download CTA -->
     <section class="final-cta" id="download">
+      <p class="final-hook">Most people quit journaling in two weeks. <span>Aurelius makes sure you don't.</span></p>
       <h2>The practice starts with one entry.</h2>
       <p class="final-subtext">Aurelius held Rome through plague, flood, and war. He kept a private journal of brutal self-examination. Now it is your turn.</p>
 
