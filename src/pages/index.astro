@@ -1,5 +1,5 @@
 ---
-import { APP_STORE_URL } from '../consts';
+import { APP_STORE_URL, APP_STORE_LISTING_URL } from '../consts';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -1427,7 +1427,7 @@ import { APP_STORE_URL } from '../consts';
     },
     "sameAs": [
       "https://sparboesystems.com",
-      APP_STORE_URL
+      APP_STORE_LISTING_URL
     ]
   })} />
 
@@ -1441,22 +1441,45 @@ import { APP_STORE_URL } from '../consts';
     "operatingSystem": "iOS 16+",
     "description": "Stoic accountability partner for iOS. Reads your journal entries, scores Energy/Focus/Physical/Satisfaction, audits intentions against actions, and delivers weekly Stoic judgment of patterns you might not see yourself.",
     "url": "https://aureliusagent.com",
-    "installUrl": APP_STORE_URL,
-    "downloadUrl": APP_STORE_URL,
+    "installUrl": APP_STORE_LISTING_URL,
+    "downloadUrl": APP_STORE_LISTING_URL,
     "offers": [
       {
         "@type": "Offer",
-        "name": "Weekly subscription",
-        "price": "6.99",
+        "name": "Annual subscription with a 7-day free trial",
+        "description": "New subscribers try the annual plan free for 7 days, then pay $89.99 per year.",
+        "price": "89.99",
         "priceCurrency": "USD",
-        "category": "Subscription"
+        "category": "Subscription",
+        "priceSpecification": [
+          {
+            "@type": "UnitPriceSpecification",
+            "name": "7-day free trial",
+            "price": "0",
+            "priceCurrency": "USD",
+            "priceType": "https://schema.org/IntroductoryPrice",
+            "billingDuration": "P7D"
+          },
+          {
+            "@type": "UnitPriceSpecification",
+            "price": "89.99",
+            "priceCurrency": "USD",
+            "billingDuration": "P1Y"
+          }
+        ]
       },
       {
         "@type": "Offer",
-        "name": "Annual subscription",
-        "price": "149.99",
+        "name": "Monthly subscription",
+        "price": "14.99",
         "priceCurrency": "USD",
-        "category": "Subscription"
+        "category": "Subscription",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "14.99",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M"
+        }
       }
     ],
     "publisher": {

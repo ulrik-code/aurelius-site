@@ -4,7 +4,7 @@
 import QRCode from 'qrcode';
 import { writeFileSync } from 'fs';
 
-const APP_STORE_URL = 'https://apps.apple.com/app/id6761541267';
+const APP_STORE_URL = 'https://apps.apple.com/app/apple-store/id6761541267?pt=128646092&ct=site&mt=8';
 const svg = await QRCode.toString(APP_STORE_URL, {
   type: 'svg',
   errorCorrectionLevel: 'M',
