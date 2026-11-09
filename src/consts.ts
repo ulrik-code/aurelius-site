@@ -5,3 +5,20 @@ export const APP_STORE_URL = 'https://apps.apple.com/app/apple-store/id676154126
 
 // The plain listing, for structured data, where a tracking link does not belong.
 export const APP_STORE_LISTING_URL = 'https://apps.apple.com/app/id6761541267';
+
+// The App Store id, for the Safari smart app banner.
+export const APP_STORE_ID = '6761541267';
+
+// Live App Store prices in USD. The visible FAQ and the JSON-LD both read these,
+// so a price change is one edit here (plus public/llms.txt).
+export const PRICING = {
+  trialDays: 7,
+  annual: '89.99',
+  monthly: '14.99',
+  currency: 'USD',
+};
+
+// Same addresses the app's About and Settings screens use.
+export const SUPPORT_EMAIL = 'support.aurelius@gmail.com';
+export const PRIVACY_URL = 'https://aurelius-api.sparboesystems.com/privacy';
+export const TERMS_URL = 'https://aurelius-api.sparboesystems.com/terms';
