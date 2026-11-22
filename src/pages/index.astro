@@ -8,6 +8,7 @@ import {
   PRIVACY_URL,
   TERMS_URL,
 } from '../consts';
+import Analytics from '../components/Analytics.astro';
 
 // FAQPage schema for AI search. Not shown on the page.
 const faqs = [
@@ -1551,6 +1552,7 @@ const faqs = [
       "acceptedAnswer": { "@type": "Answer", "text": f.a }
     }))
   })} />
+  <Analytics />
 </head>
 <body>
   <!-- Nav -->

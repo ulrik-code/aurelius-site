@@ -2,6 +2,7 @@
 import FAQSchema from '../components/FAQSchema.astro';
 import DownloadCTA from '../components/DownloadCTA.astro';
 import { APP_STORE_URL } from '../consts';
+import Analytics from '../components/Analytics.astro';
 import GuideNav from '../components/GuideNav.astro';
 import RelatedGuides from '../components/RelatedGuides.astro';
 
@@ -88,6 +89,7 @@ const articleSchema = {
 
   <!-- FAQ Schema -->
   <FAQSchema questions={faq} />
+  <Analytics />
 </head>
 <body>
   <nav class="site-nav">

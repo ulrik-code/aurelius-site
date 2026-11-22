@@ -1,0 +1,7 @@
+---
+// Cookie-free visitor counting (GoatCounter) plus App Store click events.
+// The static pages in public/emperor and public/stoic carry the same two tags by hand.
+import { GOATCOUNTER_URL } from '../consts';
+---
+<script is:inline data-goatcounter={GOATCOUNTER_URL} async src="https://gc.zgo.at/count.js"></script>
+<script is:inline src="/analytics.js" defer></script>

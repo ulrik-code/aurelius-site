@@ -6,6 +6,10 @@ export const APP_STORE_URL = 'https://apps.apple.com/app/apple-store/id676154126
 // The plain listing, for structured data, where a tracking link does not belong.
 export const APP_STORE_LISTING_URL = 'https://apps.apple.com/app/id6761541267';
 
+// GoatCounter site that counts visits and App Store clicks (public/analytics.js).
+// public/emperor and public/stoic hardcode the same address.
+export const GOATCOUNTER_URL = "https://aureliusagent.goatcounter.com/count";
+
 // The App Store id, for the Safari smart app banner.
 export const APP_STORE_ID = '6761541267';
 
