@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Retired Emperor</title>
+<meta name="description" content="Nineteen years running an empire. What kept him steady was ten quiet minutes with a page every night.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b0d10">
+<meta property="og:title" content="The Retired Emperor">
+<meta property="og:description" content="Every night, I wrote to myself.">
+<meta property="og:image" content="https://aureliusagent.com/emperor/rain.jpg">
+<link rel="icon" href="/favicon.svg">
+<style>
+  /* An overcast street, a grey overcoat, his back to us. Cold slate and rain, one warm accent taken from the umbrella handle. */
+  :root {
+    --ink: #0b0d10;
+    --slate: #161b22;
+    --mist: #ebe7df;
+    --mist-dim: rgba(235,231,223,0.66);
+    --mist-faint: rgba(235,231,223,0.14);
+    --amber: #c99550;
+    --amber-hi: #e6b872;
+    --display: Didot, "Bodoni 72", "Bodoni MT", "Playfair Display", Georgia, serif;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: -apple-system, "Segoe UI", system-ui, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--ink); }
+  body { position: relative; min-height: 100dvh; background: var(--ink); color: var(--mist); font-family: var(--serif); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  /* Full-bleed photo, fixed behind the page */
+  .photo, .rain, .shade { position: absolute; top: 0; left: 0; right: 0; height: 100dvh; min-height: 640px; z-index: 0; pointer-events: none; }
+  .photo {
+    background: url("rain.jpg") 50% 22% / cover no-repeat;
+    filter: saturate(0.85) contrast(1.05);
+  }
+  .rain {
+    opacity: 0.16;
+    background-image:
+      repeating-linear-gradient(104deg, transparent 0 46px, rgba(255,255,255,0.55) 46px 47px, transparent 47px 93px),
+      repeating-linear-gradient(100deg, transparent 0 71px, rgba(255,255,255,0.35) 71px 72px, transparent 72px 140px);
+    background-size: 100% 180px, 100% 260px;
+    animation: fall 0.9s linear infinite;
+  }
+  @keyframes fall { to { background-position: -18px 180px, -26px 260px; } }
+  .shade {
+    background: linear-gradient(180deg, rgba(11,13,16,0.35) 0%, rgba(11,13,16,0) 18%, rgba(11,13,16,0.25) 32%, rgba(11,13,16,0.8) 48%, rgba(11,13,16,0.92) 70%, var(--ink) 92%);
+  }
+
+  main {
+    position: relative; z-index: 1;
+    max-width: 440px; margin: 0 auto;
+    padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(32px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+    display: flex; flex-direction: column; gap: 22px;
+  }
+  .handle { font-family: var(--sans); font-size: 12px; letter-spacing: 0.14em; color: var(--mist-dim); text-align: center; }
+  .spacer { height: 30dvh; min-height: 180px; }
+
+  h1 { font-family: var(--display); font-weight: 400; font-size: 40px; line-height: 1.02; letter-spacing: 0.005em; text-shadow: 0 2px 24px rgba(0,0,0,0.5); }
+  .pitch { display: flex; flex-direction: column; gap: 14px; }
+  .lede { font-family: var(--display); font-style: italic; font-size: 24px; line-height: 1.25; color: var(--amber-hi); text-wrap: balance; }
+  .body { font-size: 18px; line-height: 1.55; color: var(--mist-dim); }
+  .body b { color: var(--mist); font-weight: 600; }
+
+  /* The app card */
+  .app {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 16px 14px 14px; min-height: 80px;
+    border-radius: 16px; text-decoration: none; color: var(--mist);
+    background: linear-gradient(140deg, rgba(34,30,22,0.92), rgba(14,16,20,0.94));
+    box-shadow: 0 0 0 1px rgba(201,149,80,0.55), 0 18px 40px -16px rgba(0,0,0,0.8);
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .app:hover, .app:active { transform: translateY(-1px); box-shadow: 0 0 0 1px var(--amber-hi), 0 22px 44px -16px rgba(0,0,0,0.85); }
+  .app img { width: 54px; height: 54px; border-radius: 12px; flex-shrink: 0; box-shadow: 0 0 0 1px rgba(201,149,80,0.35); }
+  .app .text { flex: 1; min-width: 0; }
+  .app .title { font-family: var(--display); font-size: 21px; letter-spacing: 0.01em; }
+  .app .desc { font-family: var(--sans); font-size: 12px; color: var(--mist-dim); margin-top: 3px; }
+  .app .arrow { color: var(--amber-hi); flex-shrink: 0; }
+
+  /* Newsletter */
+  .letter { display: flex; flex-direction: column; gap: 10px; padding: 18px 16px 16px; border-radius: 16px; background: rgba(22,27,34,0.72); box-shadow: 0 0 0 1px var(--mist-faint); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+  .letter .eyebrow { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--amber); }
+  .letter p.sub { font-size: 15px; line-height: 1.45; color: var(--mist-dim); }
+  .letter .row { display: flex; gap: 8px; }
+  .letter input {
+    flex: 1; min-width: 0; height: 46px; padding: 0 14px; border-radius: 12px;
+    border: 1px solid rgba(235,231,223,0.18); background: rgba(11,13,16,0.6); color: var(--mist);
+    font: 16px var(--sans);
+  }
+  .letter input::placeholder { color: rgba(235,231,223,0.38); }
+  .letter input:focus { outline: none; border-color: var(--amber); }
+  .letter button {
+    height: 46px; padding: 0 18px; border: 0; border-radius: 12px; cursor: pointer;
+    background: var(--amber); color: #17120a; font: 600 15px var(--sans);
+  }
+  .letter button:active { background: var(--amber-hi); }
+  .letter button:disabled { opacity: 0.6; }
+  .letter .msg { font-family: var(--sans); font-size: 13px; color: var(--amber-hi); min-height: 1em; }
+  .letter .msg:empty { display: none; }
+
+  .follow { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .follow a {
+    display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px;
+    border-radius: 12px; text-decoration: none; color: var(--mist);
+    font: 500 14px var(--sans);
+    background: rgba(22,27,34,0.6); box-shadow: 0 0 0 1px var(--mist-faint);
+    transition: box-shadow .2s ease;
+  }
+  .follow a:hover, .follow a:active { box-shadow: 0 0 0 1px rgba(235,231,223,0.4); }
+  .follow svg { width: 18px; height: 18px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--amber-hi); outline-offset: 3px; }
+
+  footer { text-align: center; font-family: var(--sans); font-size: 11px; letter-spacing: 0.06em; color: rgba(235,231,223,0.4); padding-top: 4px; }
+  footer a { color: var(--mist-dim); text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) { .rain { animation: none; } }
+</style>
+</head>
+<body>
+<div class="photo" role="img" aria-label="The Retired Emperor in a grey overcoat, walking away down an overcast street with an umbrella"></div>
+<div class="rain"></div>
+<div class="shade"></div>
+
+<main>
+  <div class="handle">@retired.emperor</div>
+  <div class="spacer"></div>
+
+  <h1>The Retired Emperor</h1>
+
+  <div class="pitch">
+    <p class="lede">Every night, I wrote to myself.</p>
+    <p class="body"><b>Ten quiet minutes with a page.</b> You don't need an empire to need that.</p>
+  </div>
+
+  <a class="app" href="https://apps.apple.com/app/apple-store/id6761541267?pt=128646092&amp;ct=emperor_links&amp;mt=8" target="_blank" rel="noopener noreferrer">
+    <img src="aurelius.png" alt="" width="54" height="54">
+    <div class="text">
+      <div class="title">The Retired Emperor</div>
+      <div class="desc">Journal with me in Aurelius, on the App Store</div>
+    </div>
+    <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+  </a>
+
+  <!-- Newsletter: same list as /stoic. The Kit form ID is set once in /newsletter.js. -->
+  <form class="letter" data-newsletter data-source="emperor" novalidate>
+    <label class="eyebrow" for="email">Field Notes</label>
+    <p class="sub">A letter on living by the old rules is on its way. Sign up early and get the first one.</p>
+    <div class="row">
+      <input id="email" name="email_address" type="email" inputmode="email" autocomplete="email" placeholder="Your email" required>
+      <button type="submit">Join early</button>
+    </div>
+    <p class="msg" role="status" aria-live="polite"></p>
+  </form>
+
+  <nav class="follow" aria-label="Follow">
+    <a href="https://www.instagram.com/retired.emperor/" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+      Instagram
+    </a>
+    <a href="https://www.tiktok.com/@retired.emperor7" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.4 2.6 2.2 4.3 5 4.5"/></svg>
+      TikTok
+    </a>
+  </nav>
+
+  <footer>An AI character from <a href="https://aureliusagent.com/">Aurelius</a></footer>
+</main>
+
+<script src="/newsletter.js" defer></script>
+</body>
+</html>

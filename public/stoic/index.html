@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stoic Operator</title>
+<meta name="description" content="Old philosophy for people building something new.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a0d18">
+<meta property="og:title" content="Stoic Operator">
+<meta property="og:description" content="Every kingdom starts in a quiet room.">
+<meta property="og:image" content="https://aureliusagent.com/stoic/kingdom.jpg">
+<link rel="icon" href="/favicon.svg">
+<style>
+  /* Same format as /emperor, different world: a cloaked knight on a cliff at dusk, a kingdom and a dragon beyond.
+     Navy velvet, dusk gilt, parchment text, small-caps serif and codex corner marks (from Vex's first draft). */
+  :root {
+    --night: #0a0d18;
+    --velvet: #18214a;
+    --gilt: #d8a74a;
+    --gilt-hi: #f0cf86;
+    --gilt-soft: rgba(216,167,74,0.32);
+    --parchment: #eee4cf;
+    --ash: rgba(238,228,207,0.66);
+    --line: rgba(238,228,207,0.14);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: -apple-system, "Segoe UI", system-ui, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--night); }
+  body { position: relative; min-height: 100dvh; background: var(--night); color: var(--parchment); font-family: var(--serif); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  .scene, .embers, .shade { position: absolute; top: 0; left: 0; right: 0; height: 100dvh; min-height: 640px; z-index: 0; pointer-events: none; }
+  .scene { background: url("kingdom.jpg") 50% 0 / cover no-repeat; }
+  /* Slow drifting embers instead of the emperor's rain */
+  .embers {
+    opacity: 0.5;
+    background-image:
+      radial-gradient(1.5px 1.5px at 12% 80%, var(--gilt-hi), transparent),
+      radial-gradient(1px 1px at 33% 64%, var(--gilt-hi), transparent),
+      radial-gradient(1.5px 1.5px at 58% 88%, var(--gilt), transparent),
+      radial-gradient(1px 1px at 76% 70%, var(--gilt-hi), transparent),
+      radial-gradient(1.5px 1.5px at 90% 84%, var(--gilt), transparent);
+    background-size: 100% 60%;
+    animation: drift 14s linear infinite;
+  }
+  @keyframes drift { from { background-position: 0 100%; } to { background-position: 18px -60%; } }
+  .shade {
+    background:
+      radial-gradient(90% 40% at 50% 18%, rgba(216,167,74,0.10), transparent 70%),
+      linear-gradient(180deg, rgba(10,13,24,0.35) 0%, rgba(10,13,24,0) 16%, rgba(10,13,24,0) 40%, rgba(10,13,24,0.75) 56%, rgba(10,13,24,0.92) 72%, var(--night) 92%);
+  }
+
+  main {
+    position: relative; z-index: 1;
+    max-width: 440px; margin: 0 auto;
+    padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(32px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .top { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ash); text-align: center; }
+  .spacer { height: 36dvh; min-height: 220px; }
+
+  h1 { font-weight: 600; font-size: 36px; line-height: 1.05; letter-spacing: 0.05em; font-variant: small-caps; text-shadow: 0 2px 24px rgba(0,0,0,0.6); }
+  .pitch { display: flex; flex-direction: column; gap: 10px; }
+  .lede { font-style: italic; font-size: 22px; line-height: 1.3; color: var(--gilt-hi); text-wrap: balance; }
+  .body { font-size: 17px; line-height: 1.5; color: var(--ash); }
+  .body b { color: var(--parchment); font-weight: 600; }
+
+  /* Codex corner marks */
+  .marked { position: relative; }
+  .marked::before, .marked::after { content: ""; position: absolute; width: 10px; height: 10px; border-color: var(--gilt); border-style: solid; pointer-events: none; }
+  .marked::before { top: 5px; left: 5px; border-width: 1px 0 0 1px; }
+  .marked::after { bottom: 5px; right: 5px; border-width: 0 1px 1px 0; }
+
+  .app {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 18px 14px 16px; min-height: 80px;
+    border: 1px solid rgba(216,167,74,0.55); border-radius: 4px;
+    background: linear-gradient(135deg, rgba(216,167,74,0.16), rgba(24,33,74,0.75));
+    box-shadow: 0 14px 34px -14px rgba(0,0,0,0.8);
+    color: var(--parchment); text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .app:hover, .app:active { transform: translateY(-1px); border-color: var(--gilt-hi); }
+  .app img { width: 54px; height: 54px; border-radius: 12px; flex-shrink: 0; }
+  .app .text { flex: 1; min-width: 0; }
+  .app .title { font-size: 20px; font-weight: 600; letter-spacing: 0.04em; font-variant: small-caps; }
+  .app .desc { font-family: var(--sans); font-size: 12px; color: var(--ash); margin-top: 3px; }
+  .app .arrow { color: var(--gilt); flex-shrink: 0; }
+
+  .letter {
+    display: flex; flex-direction: column; gap: 10px; padding: 20px 18px 18px;
+    border: 1px solid var(--gilt-soft); border-radius: 4px;
+    background: linear-gradient(160deg, rgba(36,48,106,0.6), rgba(10,13,24,0.7));
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  }
+  .letter .eyebrow { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gilt); }
+  .letter p.sub { font-size: 15px; line-height: 1.45; color: var(--ash); }
+  .letter .row { display: flex; gap: 8px; }
+  .letter input {
+    flex: 1; min-width: 0; height: 46px; padding: 0 14px; border-radius: 4px;
+    border: 1px solid var(--line); background: rgba(10,13,24,0.65); color: var(--parchment);
+    font: 16px var(--sans);
+  }
+  .letter input::placeholder { color: rgba(238,228,207,0.38); }
+  .letter input:focus { outline: none; border-color: var(--gilt); }
+  .letter button {
+    height: 46px; padding: 0 18px; border: 0; border-radius: 4px; cursor: pointer;
+    background: var(--gilt); color: #17120a; font: 600 15px var(--sans);
+  }
+  .letter button:active { background: var(--gilt-hi); }
+  .letter button:disabled { opacity: 0.6; }
+  .letter .msg { font-family: var(--sans); font-size: 13px; color: var(--gilt-hi); }
+  .letter .msg:empty { display: none; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--gilt-hi); outline-offset: 3px; }
+
+  footer { text-align: center; padding-top: 6px; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ash); }
+  footer span { display: block; margin-top: 6px; letter-spacing: 0.2em; font-size: 10px; color: rgba(238,228,207,0.35); }
+
+  @media (prefers-reduced-motion: reduce) { .embers { animation: none; } }
+</style>
+</head>
+<body>
+<div class="scene" role="img" aria-label="A masked knight in a navy cloak stands on a cliff at dusk, looking toward a distant kingdom as a dragon flies overhead"></div>
+<div class="embers"></div>
+<div class="shade"></div>
+
+<main>
+  <!-- Handle goes here once the account name is final, in place of the line below. -->
+  <div class="top">Memento mori</div>
+  <div class="spacer"></div>
+
+  <h1>Stoic Operator</h1>
+
+  <div class="pitch">
+    <p class="lede">Every kingdom starts in a quiet room.</p>
+    <p class="body"><b>A page each morning.</b> Old philosophy for people building something new.</p>
+  </div>
+
+  <a class="app marked" href="https://apps.apple.com/app/apple-store/id6761541267?pt=128646092&amp;ct=stoic_links&amp;mt=8" target="_blank" rel="noopener noreferrer">
+    <img src="aurelius.png" alt="" width="54" height="54">
+    <div class="text">
+      <div class="title">Aurelius</div>
+      <div class="desc">Stoic AI journal, on the App Store</div>
+    </div>
+    <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+  </a>
+
+  <!-- Newsletter: same list as /emperor. The Kit form ID is set once in /newsletter.js. -->
+  <form class="letter marked" data-newsletter data-source="stoic" novalidate>
+    <label class="eyebrow" for="email">Field Notes</label>
+    <p class="sub">A letter on living by the old rules is on its way. Sign up early and get the first one.</p>
+    <div class="row">
+      <input id="email" name="email_address" type="email" inputmode="email" autocomplete="email" placeholder="Your email" required>
+      <button type="submit">Join early</button>
+    </div>
+    <p class="msg" role="status" aria-live="polite"></p>
+  </form>
+
+  <!-- Follow links go here once handles are known: copy the .follow block from /emperor. -->
+
+  <footer>Stoic Operator<span>MMXXVI</span></footer>
+</main>
+<script src="/newsletter.js" defer></script>
+</body>
+</html>
