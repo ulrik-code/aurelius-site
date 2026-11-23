@@ -1,0 +1,57 @@
+---
+// Bio links: aureliusagent.com/go/<slug> counts the tap in GoatCounter, then opens
+// the App Store with that account's campaign token, in one tap. Slugs live in consts.ts.
+import { GO_LINKS, GOATCOUNTER_URL, appStoreUrlFor } from '../../consts';
+
+export function getStaticPaths() {
+  return Object.entries(GO_LINKS).map(([slug, ct]) => ({
+    params: { slug },
+    props: { store: appStoreUrlFor(ct) },
+  }));
+}
+
+const { slug } = Astro.params;
+const { store } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Aurelius Agent on the App Store</title>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <style>
+    html, body { margin: 0; height: 100%; background: #111319; color: #e8e2d4; }
+    body { display: flex; align-items: center; justify-content: center; font: 16px/1.5 -apple-system, system-ui, sans-serif; }
+    main { text-align: center; padding: 24px; }
+    p { margin: 0 0 20px; color: #a9a294; }
+    a { display: inline-block; padding: 14px 28px; border-radius: 999px; background: #c9a961; color: #111319; font-weight: 600; text-decoration: none; }
+  </style>
+</head>
+<body data-store={store} data-count={GOATCOUNTER_URL} data-slug={slug}>
+  <main>
+    <p>Opening the App Store</p>
+    <a href={store}>Open the App Store</a>
+  </main>
+  <script is:inline>
+    (function () {
+      var b = document.body;
+      var done = false;
+      function go() { if (done) return; done = true; location.replace(b.dataset.store); }
+      // GoatCounter's pixel endpoint. Redirect once it answers, or after 600 ms at most.
+      try {
+        var q = '?p=' + encodeURIComponent(location.pathname) +
+          '&t=' + encodeURIComponent('go ' + b.dataset.slug) +
+          '&r=' + encodeURIComponent(document.referrer) +
+          '&s=' + encodeURIComponent([screen.width, screen.height, window.devicePixelRatio || 1].join(',')) +
+          '&rnd=' + Math.random().toString(36).slice(2);
+        var img = new Image();
+        img.onload = img.onerror = go;
+        img.src = b.dataset.count + q;
+      } catch (e) {}
+      setTimeout(go, 600);
+    })();
+  </script>
+</body>
+</html>
