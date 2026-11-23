@@ -8,11 +8,15 @@ export const appStoreUrlFor = (ct: string) =>
   `https://apps.apple.com/app/apple-store/id6761541267?pt=128646092&ct=${ct}&mt=8`;
 
 // Bio links: aureliusagent.com/go/<slug> counts the tap, then opens the App Store with
-// this campaign token. emperor and stoic share tokens with their link pages.
+// that bio's campaign token. Tokens follow growth-engine/playbooks/aurelius-measurement.md.
 export const GO_LINKS: Record<string, string> = {
-  emperor: "emperor_links",
-  stoic: "stoic_links",
-  journal: "journal_links",
+  journal: "ig_bio", // @aurelius.journal Instagram
+  "journal-tt": "tt_bio", // Aurelius TikTok
+  "journal-yt": "yt_bio", // Aurelius YouTube channel links
+  emperor: "ig_persona", // @retired.emperor Instagram
+  "emperor-tt": "tt_persona", // @retired.emperor7 TikTok
+  stoic: "stoic_ig", // Stoic Operator Instagram (Norway)
+  "stoic-tt": "stoic_tt", // Stoic Operator TikTok (US)
 };
 
 // The plain listing, for structured data, where a tracking link does not belong.
