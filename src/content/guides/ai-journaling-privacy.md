@@ -3,6 +3,7 @@ title: "Do AI Journaling Apps Keep Your Data Private? What to Check Before You W
 subtitle: "Your journal contains your most honest thoughts. Most apps send them to third-party AI servers with no guarantees."
 description: "Most AI journaling apps send your entries to OpenAI or Anthropic servers, store them indefinitely, and may use them for training. Here's what to check before trusting an app with your inner life."
 publishDate: "2026-04-08"
+updatedDate: "2026-11-26"
 readTime: "9 min read"
 tier: "long-tail"
 targetQueries:
@@ -134,11 +135,17 @@ Most people don't read privacy policies. For a journaling app, it's worth the te
 
 ## How Aurelius Approaches This
 
-Aurelius was built with a specific privacy architecture. Journal entries live in the user's own Notion workspace, not on Aurelius servers. The app processes entries through AI to generate feedback, scores, and weekly narratives, but the raw journal text belongs to the user and sits in infrastructure the user controls.
+Here is exactly what happens to an Aurelius Agent journal, using the checklist above.
 
-For users who want the strongest possible privacy, Aurelius offers BYOK, bring your own API key. This means journal entries travel directly from the user's device to the AI provider under the user's own account. Aurelius handles the intelligence layer: the [knowledge graph that learns over time](/guides/ai-journaling-app-that-learns/), the [scoring system](/guides/ai-reflection-scoring/), the [weekly mirror narrative](/guides/morning-evening-stoic-framework/). But the raw text of someone's most honest thoughts never sits on a server they don't control.
+**Where entries are stored.** On the Aurelius server, tied to your account.
 
-This isn't the cheapest architecture to build or maintain. It's significantly more complex than storing everything centrally. But a journal is not a to-do list. The [cost of an AI journaling app](/guides/ai-journaling-app-pricing/) should include the cost of privacy, and the user should know exactly what they're paying for.
+**Who processes them.** Anthropic's Claude writes the AI replies, [pattern readings](/guides/ai-journaling-app-that-learns/) and the Weekly Lesson. Voice entries go to OpenAI for transcription. The [privacy policy](https://aurelius-api.sparboesystems.com/privacy) names both providers and how long they may keep data.
+
+**Training.** Aurelius does not sell your data or share it for advertising, and does not allow those providers to train on it.
+
+**Your controls.** Settings, Privacy, AI processing turns the AI off. App Lock sets a PIN. Settings, Practice, What Aurelius Knows lists the facts he keeps about you, and you can remove any of them. Settings, Account, Delete account erases your account and everything in it, and cannot be undone. Cancel the Apple subscription separately.
+
+**What is missing.** There is no data export yet, and no on-device AI. If either is a requirement, a local-first journal is the better fit. A journal is not a to-do list, and the [cost of an AI journaling app](/guides/ai-journaling-app-pricing/) should include knowing exactly where your words go.
 
 <dl class="faq-section">
 <dt>Do AI journaling apps send my data to OpenAI?</dt>

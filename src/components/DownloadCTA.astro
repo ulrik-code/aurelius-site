@@ -1,11 +1,17 @@
 ---
 import { APP_STORE_URL } from '../consts';
+
+interface Props {
+  href?: string;
+}
+
+const { href = APP_STORE_URL } = Astro.props;
 ---
 <aside class="cta-box">
   <div class="cta-inner">
     <h3>Aurelius is on the App Store</h3>
-    <p>An AI accountability partner built on Stoic philosophy. Built to keep you honest when motivation fades.</p>
-    <a href={APP_STORE_URL} class="cta-button">Download on the App Store</a>
+    <p>A Stoic journal that holds you to the promises you make yourself. For iPhone, with a 7-day free trial for new subscribers.</p>
+    <a href={href} class="cta-button">Download on the App Store</a>
   </div>
 </aside>
 

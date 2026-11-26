@@ -18,14 +18,17 @@ interface Props {
   subtitle: string;
   description: string;
   publishDate: string;
+  updatedDate?: string;
   readTime: string;
+  storeHref?: string;
   slug: string;
   faq: Array<{ question: string; answer: string }>;
   allGuides: GuideRef[];
   related?: Array<{ slug: string; title: string; description: string; readTime: string }>;
 }
 
-const { title, subtitle, description, publishDate, readTime, slug, faq, allGuides, related = [] } = Astro.props;
+const { title, subtitle, description, publishDate, updatedDate, readTime, slug, faq, allGuides, related = [], storeHref = APP_STORE_URL } = Astro.props;
+const modified = updatedDate ?? publishDate;
 const canonicalUrl = new URL(`/guides/${slug}/`, Astro.site);
 const ogImage = new URL(`/og/${slug}.png`, Astro.site);
 
@@ -35,7 +38,7 @@ const articleSchema = {
   "headline": title,
   "description": description,
   "datePublished": publishDate,
-  "dateModified": publishDate,
+  "dateModified": modified,
   "author": {
     "@type": "Person",
     "name": "Ulrik Sparboe",
@@ -96,7 +99,7 @@ const articleSchema = {
     <a href="/" class="nav-logo">Aurelius</a>
     <div class="nav-links">
       <a href="/guides/">Guides</a>
-      <a href={APP_STORE_URL} class="nav-cta">Download</a>
+      <a href={storeHref} class="nav-cta">Download</a>
     </div>
   </nav>
 
@@ -109,7 +112,7 @@ const articleSchema = {
         <div class="byline">
           <span>By Ulrik Sparboe</span>
           <span class="sep">·</span>
-          <time datetime={publishDate}>{new Date(publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+          <time datetime={modified}>{updatedDate ? 'Updated ' : ''}{new Date(modified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
           <span class="sep">·</span>
           <span>{readTime}</span>
         </div>
@@ -119,7 +122,7 @@ const articleSchema = {
         <slot />
       </div>
 
-      <DownloadCTA />
+      <DownloadCTA href={storeHref} />
 
       <RelatedGuides related={related} />
 

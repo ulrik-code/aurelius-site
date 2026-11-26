@@ -1,10 +1,19 @@
 ---
 // Bio links: aureliusagent.com/go/<slug> counts the tap in GoatCounter, then opens
-// the App Store with that account's campaign token, in one tap. Slugs live in consts.ts.
+// the App Store with that account's campaign token, in one tap. Bio slugs live in
+// consts.ts. Guides with a storeToken get /go/<guide-slug>/ too.
+import { getCollection } from 'astro:content';
 import { GO_LINKS, GOATCOUNTER_URL, appStoreUrlFor } from '../../consts';
 
-export function getStaticPaths() {
-  return Object.entries(GO_LINKS).map(([slug, ct]) => ({
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  const links: Record<string, string> = { ...GO_LINKS };
+  for (const g of guides) {
+    if (!g.data.storeToken) continue;
+    if (links[g.id]) throw new Error(`Go link slug clash: ${g.id}`);
+    links[g.id] = g.data.storeToken;
+  }
+  return Object.entries(links).map(([slug, ct]) => ({
     params: { slug },
     props: { store: appStoreUrlFor(ct) },
   }));
