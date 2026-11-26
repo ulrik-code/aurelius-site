@@ -1,6 +1,6 @@
 # AEO exact questions, 2026-11-26
 
-Status: all 12 approved by Ulrik 2026-11-26. Built and committed on `feature/aeo-exact-questions`. Not deployed. Earlier baselines: `app-builder/aurelius/docs/ai-citation-baseline-2026-05-05.md`.
+Status: all 12 approved by Ulrik 2026-11-26. Deployed 2026-11-26 (master eff04bb, GitHub Pages run 45798301824, all 12 URLs checked live). Re-run the baseline around 2026-12-10. Earlier baselines: `app-builder/aurelius/docs/ai-citation-baseline-2026-05-05.md`.
 
 | # | Page | Campaign token (`ct=`) and go link |
 |---|---|---|
