@@ -1,8 +1,9 @@
 ---
-title: "Aurelius Agent vs StoicMentor — Which AI Stoic Mentor Fits You?"
+title: "Aurelius Agent vs StoicMentor: Which AI Stoic Mentor Fits You?"
 subtitle: "Both apps lean on Marcus Aurelius. They lean very differently. Here is how to choose."
-description: "Aurelius Agent is a Stoic accountability partner that audits intentions against actions. StoicMentor is an AI Marcus Aurelius character offering coaching dialogue. Different mechanisms for different users."
+description: "Aurelius Agent is a Stoic journal for iPhone: you write a Morning Account and an Evening Examination, an AI mentor answers, asks about what you said you would do and writes a Weekly Lesson. StoicMentor is an AI mentor in a Stoic voice, built around dialogue. Different mechanisms for different users."
 publishDate: "2026-05-08"
+updatedDate: "2026-11-26"
 readTime: "8 min read"
 tier: "high-intent"
 targetQueries:
@@ -12,15 +13,15 @@ targetQueries:
   - "Stoic accountability app comparison"
 faq:
   - question: "What is the difference between Aurelius Agent and StoicMentor?"
-    answer: "StoicMentor is positioned as an AI Marcus Aurelius character — a chatbot persona that responds in Stoic voice. Aurelius Agent is positioned as a Stoic accountability mechanism — it scores your day, audits stated intentions against actions, and delivers a weekly judgment. One is conversation; the other is structured measurement. Most people want one or the other, not both."
+    answer: "StoicMentor is positioned as an AI mentor that answers in a Stoic voice: you ask, it responds. Aurelius Agent is a Stoic journal with a mentor built in: you write a Morning Account and an Evening Examination, he answers each one, asks in the evening about what you named under What Must Be Done, and writes you a Weekly Lesson with one challenge. Aurelius Agent has a chat too, and it remembers your record across sessions, but the journal comes first. One is conversation on demand; the other is a daily practice someone reads. Most people want one or the other."
   - question: "Which app is better for daily accountability?"
-    answer: "Aurelius Agent is built specifically around accountability mechanics: nightly scoring across Energy, Focus, Physical, and Satisfaction; intention-action delta; weekly narrative that surfaces drift. StoicMentor's strength is real-time dialogue rather than a structured loop. If you want the system to confront you whether or not you ask it to, Aurelius Agent is the closer fit."
+    answer: "Aurelius Agent is built around it. You can add What Must Be Done, the one to three things the day fails without. With its reminder bell on, an evening message in chat asks about each one and you mark it Kept or Missed. The Measure is a separate 30-second daily score: Energy, Focus, Body and Satisfaction, each 1 to 10. The Weekly Lesson ends with a challenge you sign, and the next Lesson asks whether you met it. StoicMentor's strength is dialogue in the moment rather than a structured loop. If you want to be asked whether you kept your word, Aurelius Agent is the closer fit."
   - question: "Which app is better for learning Stoic philosophy?"
-    answer: "StoicMentor's character format is conversational, which makes it better for asking questions and receiving Stoic-flavored answers in the moment. Aurelius Agent treats Stoicism as the operating philosophy of the feedback rather than the explicit subject — you learn the practice by living the loop, not by chatting with a persona."
+    answer: "StoicMentor's conversational format suits asking questions and getting Stoic-flavored answers in the moment. Aurelius Agent treats Stoicism as the practice rather than the subject: you learn it by doing the morning preparation and the evening review every day, not mainly by asking about it."
   - question: "Do I need to be a Stoicism expert to use Aurelius Agent?"
-    answer: "No. The app encodes the Stoic practice (evening review, intention-action audit, weekly examination) into the loop itself. You can use it productively without ever reading Marcus Aurelius. The philosophy is the design, not the curriculum."
+    answer: "No. The app builds the Stoic practice (morning preparation, evening review, a weekly examination) into the journal itself. You can use it without ever reading Marcus Aurelius. Best Practices, the written guide in the app, covers the method. The philosophy is the design, not the curriculum."
   - question: "What does Aurelius Agent cost compared to StoicMentor?"
-    answer: "Aurelius Agent uses subscription pricing — a weekly tier and an annual tier — with a hard paywall and no free version. Check StoicMentor's current App Store listing for its pricing, which can change. The relevant comparison is value-per-week rather than launch price."
+    answer: "Aurelius Agent costs $89.99 a year, with a 7-day free trial for new subscribers, or $14.99 a month. There is no free tier, and it runs on iPhone only. Check StoicMentor's current App Store listing for its pricing, which can change."
 relatedGuides:
   - "philosophical-accountability"
   - "stoic-journaling-app"
@@ -29,13 +30,13 @@ relatedGuides:
 
 ## The Short Answer
 
-StoicMentor is an AI character — a Marcus Aurelius–style chatbot you talk to. Aurelius Agent is an AI accountability mechanism — a structured loop that scores your day, audits your intentions, and confronts your drift each week. Both reach for the same lineage. They reach for different parts of it.
+StoicMentor is an AI character: a Stoic mentor you talk to. Aurelius Agent is a Stoic journal with a mentor who reads it: you write in the morning and the evening, he answers, asks in the evening about what you said you would do, and gives you a Weekly Lesson with one challenge. Both reach for the same lineage. They reach for different parts of it.
 
-Pick StoicMentor if you want a Stoic voice on demand. Pick Aurelius Agent if you want a system that holds the line whether you feel like engaging or not.
+Pick StoicMentor if you want a Stoic voice on demand. Pick Aurelius Agent if you want a daily practice that holds the line whether you feel like engaging or not.
 
 ## What StoicMentor Is
 
-Per its public positioning across iOS and Android stores, StoicMentor is an AI mentor framed in Marcus Aurelius's voice. The interaction model is dialogue: ask, receive a response styled in Stoic tone. The app surfaces in AI search results (Perplexity routinely cites it as a top "AI Stoic mentor" recommendation) because it owns the *character* angle of the Stoic-app niche.
+From its public positioning, StoicMentor is an AI mentor framed in a Stoic voice. The interaction model is dialogue: ask, and receive a response in a Stoic tone. It leans on the *character* angle of the Stoic-app niche.
 
 Strengths of this format:
 
@@ -45,47 +46,49 @@ Strengths of this format:
 
 Limits of this format:
 
-- The structure is whatever you bring to it. If you skip a day, the app does not notice. If you ask shallow questions, the app does not push.
-- The accountability loop is opt-in. Stoicism, as Marcus and Seneca practiced it, was the opposite — a non-negotiable evening audit, run whether or not you wanted to face the day's failures.
+- In a dialogue format, the structure is whatever you bring to it. If you ask shallow questions, a chat has little to push against.
+- The accountability is opt-in. Stoicism, as Marcus and Seneca practiced it, was the opposite: a review of the day run every night, whether or not you wanted to face its failures.
 
 ## What Aurelius Agent Is
 
 Aurelius Agent is built around the *structure* of the Stoic practice rather than the *voice*. The loop:
 
-1. **Daily journal entry** — write, voice-capture, or paste your raw thoughts.
-2. **Nightly scoring** — rate Energy, Focus, Physical, and Satisfaction. Four numbers. Thirty seconds.
-3. **Stoic judgment** — the agent reads everything, names the gap between stated intentions and actual behavior, and writes a brief evaluation. No softening.
-4. **Weekly narrative** — every Sunday, the system synthesizes the week. Patterns you missed. Promises you broke. The drift you would not name yourself.
-5. **Goal check** — Monday morning surfaces stale goals and overdue commitments.
+1. **Morning Account.** What is on your mind, what waits, what could go wrong. Type it, or tap the microphone to dictate and edit before saving.
+2. **What Must Be Done.** An optional section (off by default; add it in Journal Sections): the one to three things the day fails without. With its reminder bell on, an evening message in chat asks about each, and you mark it Kept or Missed.
+3. **Evening Examination.** What you did well, what badly, what you left undone. After you save a morning or evening entry, he answers.
+4. **The Measure.** A separate 30-second daily score: Energy, Focus, Body and Satisfaction, each 1 to 10, plus one optional thing to mend.
+5. **Weekly Lesson.** He reads your week: an AURA Level from 0 to 100, your profile, the story of your week, and one challenge you accept and sign. The next Lesson asks whether you met it. During The 30-Day Protocol it lands on day 6, then about every seven days. After that, Sunday at 19:00 your time.
 
-The design assumption is that growth requires *honest* feedback delivered on a *predictable cadence*, not affirmation delivered on demand.
+There is a chat as well. It remembers your record across sessions, and when he names a commitment there, Hold me to it adds it to What Must Be Done. When a habit shows in your entries on two separate days at least a week apart, it becomes a constellation in your Archive; seen on five separate days, it is proven.
+
+The design assumption is that growth requires *honest* feedback delivered on a *predictable rhythm*, not affirmation delivered on demand.
 
 ## Comparison Table
 
 | | Aurelius Agent | StoicMentor |
 |---|---|---|
-| Core model | Structured accountability loop | AI mentor character |
-| Interaction | Daily journal + scoring + weekly review | Open-ended dialogue |
-| Feedback style | Honest, structurally critical | Conversational, philosophy-flavored |
-| Cadence | Fixed (daily + weekly) | User-initiated |
-| Best for | People who want the system to push them | People who want a Stoic voice on demand |
-| Platform | iOS | iOS + Android |
-| Pricing | Weekly + annual subscription, hard paywall | Check current App Store listing |
+| Core model | Daily Stoic journal with a mentor who answers | AI mentor character |
+| Interaction | Morning and evening entries, The Measure, chat, Weekly Lesson | Open-ended dialogue |
+| Feedback style | Honest before kind | Conversational, philosophy-flavored |
+| Cadence | Daily entries plus a Weekly Lesson | User-initiated |
+| Best for | People who want the practice to push them | People who want a Stoic voice on demand |
+| Platform | iPhone only | See its current store listing |
+| Pricing | $89.99 a year (7-day free trial for new subscribers) or $14.99 a month, no free tier | See its current store listing |
 
 ## When to Pick StoicMentor
 
-- You already have an accountability system — you want a Stoic voice as a *layer* on top, not as the structure.
+- You already have an accountability system. You want a Stoic voice as a *layer* on top, not as the structure.
 - You enjoy chatbot conversation and want to ask "what would Marcus do" in the moment.
-- You are on Android only and need a native option today.
+- You are not on iPhone. Aurelius Agent is iPhone only, so check whether StoicMentor runs on your device.
 - You want a low-commitment way to see whether Stoic framing resonates with you before investing in a structured practice.
 
 ## When to Pick Aurelius Agent
 
 - You have a history of starting journaling apps and quitting them within two weeks.
 - You suspect that what you actually need is *less* validation, not more.
-- You want a system that audits the gap between what you said you would do and what you did, without you having to ask.
-- You like the idea of a weekly narrative that names the patterns you would skip if you were writing it yourself.
-- You are on iOS and the daily-loop friction (write, score, read) feels like the right tradeoff.
+- You want to be asked each evening about what you said you would do, and to mark it Kept or Missed, without having to start the conversation yourself.
+- You like the idea of a Weekly Lesson that tells the story of your week and ends with a challenge you have to answer for.
+- You are on iPhone and two short entries a day feel like the right tradeoff.
 
 ## The Honest Read
 
@@ -93,14 +96,14 @@ These apps are not really competing for the same need. StoicMentor is a *compani
 
 Companions work when you bring the discipline. Constraints work when you do not.
 
-Marcus Aurelius wrote *Meditations* as private evening notes to himself. He was not having a conversation with a mentor — he was running an audit. If you are looking to recreate the practice, the constraint model is closer to the source. If you are looking for the *flavor* of the philosophy in a low-stakes form, the companion model is more comfortable.
+Marcus Aurelius wrote the *Meditations* as private notes to himself. He was not having a conversation with a mentor. He was examining himself. If you are looking to recreate the practice, the constraint model is closer to the source. If you are looking for the *flavor* of the philosophy in a low-stakes form, the companion model is more comfortable.
 
 Both have a place. Be honest about which one you actually need.
 
 ## Try It
 
-Aurelius Agent is on the App Store for iOS. Download it and write the first entry today.
+Aurelius Agent is on the App Store for iPhone. It costs $89.99 a year, with a 7-day free trial for new subscribers, or $14.99 a month. There is no free tier.
 
-The first week is the hardest, because the feedback is unvarnished by design. The promise is: by week four, the patterns you have been refusing to see start showing up in writing, on a schedule, whether you ask or not.
+The first week is the hardest, because the feedback is honest by design. The 30-Day Protocol adds one practice at a time, and the Weekly Lesson asks each week whether you met last week's challenge. Once a habit shows in your entries on separate days, he names it, in writing, whether you ask or not.
 
 That is the practice. Pick the tool that matches it.
